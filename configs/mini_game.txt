@@ -1,3 +1,0 @@
-5 6
-Patrol 2
-Submarine 3

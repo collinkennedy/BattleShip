@@ -1,8 +1,23 @@
+from typing import Iterable
+
+
 class Player:
+    def __init__(self, otherPlayers: Iterable["Player"], blankCharacter: str) -> None:
+        self.name = self.getNameFromPlayer(otherPlayers)
+        self.piece = self.getPieceFromPlayer(otherPlayers, blankCharacter)
 
-    pass
-
-
+    @staticmethod
+    def get_name_from_player(otherPlayers: Iterable["Player"]) -> str:
+        """get a VALID name form the player.
+        A name that is already used is invalid!!!
+        """
+        alreadyUsedNames = set([player.name for player in otherPlayers])
+        while True:
+            name = input('Please enter your name: ')
+            if name not in alreadyUsedNames:
+                return name
+            else:
+                print(f'{name} has already been used. Pick another name.')
 
 
 if __name__ == "__main__":

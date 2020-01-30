@@ -2,7 +2,7 @@ from typing import Iterable
 
 
 class Player:
-    def __init__(self, otherPlayers: Iterable["Player"], blankCharacter: str) -> None:
+    def __init__(self, otherPlayers: Iterable["Player"]) -> None:
         self.name = self.getNameFromPlayer(otherPlayers)
         #self.piece = self.getPieceFromPlayer(otherPlayers, blankCharacter)
 

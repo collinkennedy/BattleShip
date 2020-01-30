@@ -1,6 +1,6 @@
-from typing import Iterable, Set, Tuple, Dict, List
+from typing import Iterable, Set, Tuple, Dict, List, Iterator
 import sys
-from game_class import Game
+#from game_class import Game
 from player_class import Player
 from ship_class import Ship
 
@@ -13,8 +13,8 @@ class Board:
         self.blank_char = blankChar
 
     def __str__(self) -> str:
-        sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
-        rep = sep * 2 + sep.join((str(i) for i in range(self.numCols))) + '\n'
+        sep = ' ' * 1
+        rep = sep * 2 + sep.join((str(i) for i in range(6))) + '\n'
         for i, row in enumerate(self):
             rep += str(i) + sep + sep.join(row) + '\n'
         return rep

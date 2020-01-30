@@ -1,7 +1,14 @@
+from typing import Iterable, Set, Tuple
+import sys
+
 class Ship:
+    def __init__(self):
+        self.name = getShipName(listOfShips)
+        self.size = getShipSize(listOfShips)
 
-    pass
-
+    def getShipName() -> str:
+        
+        pass
 
 
 

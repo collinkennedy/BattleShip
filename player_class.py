@@ -2,15 +2,15 @@ from typing import Iterable, Set, Tuple, Dict, List
 import copy
 import sys
 import game_class
-#from game_class import Game
 from board_class import Board
 import main
 #from ship_class import Ship
 
+
 class Player:
-    def __init__(self, otherPlayers: Iterable["Player"]) -> None:
+    def __init__(self, otherPlayers: Iterable["Player"], gameBoard : "Board") -> None:
         self.name = self.getNameFromPlayer(otherPlayers)
-        self.playerBoard = None
+        self.playerBoard = copy.deepcopy(gameBoard)
 
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:
@@ -28,18 +28,18 @@ class Player:
     def __str__(self) -> str:
         return self.name
 
-    def takeTurn(self, board : "Board"):
-        x = 1
-        if x == 1:
-            #set up game
-            self.playerBoard = copy.deepcopy(board)
-            self.playerBoard.findLocation(3,4)
-            print(self.playerBoard)
-            x = 2
-        else:
-            #take regular turn
-            pass
-        pass
+    #def takeTurn(self, board : "Board"):
+    #    x = 1
+    #    if x == 1:
+    #        #set up game
+    #        self.playerBoard = copy.deepcopy(board)
+    #        self.playerBoard.findLocation(3,4)
+    #        print(self.playerBoard)
+    #        x = 2
+    #    else:
+    #        #take regular turn
+    #        pass
+    #    pass
 
 
 if __name__ == "__main__":

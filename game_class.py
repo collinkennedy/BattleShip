@@ -12,22 +12,28 @@ class Game:
         self.board = Board(numRows, numCols, blankChar)
         self.players = []
         for playerNum in range(2):
-            self.players.append(Player(self.players))
+            self.players.append(Player(self.players, self.board))
             print(self.players)
         self._curPlayerTurn = 0
 
     def play(self) -> None:
         while not self.someoneWon():
+            print("model board")
             self.displayGameState()
             curPlayer = self.getCurPlayer()
-            curPlayer.takeTurn(self.board)
+            print(curPlayer.name)
+            print(curPlayer.playerBoard)
+            #if curPlayer.name == "Bob":
+            #    curPlayer.playerBoard.findLocation(4,4)
+            #else:
+            #    curPlayer.playerBoard.findLocation(2,2)
+            #curPlayer.takeTurn(self.board)
             self.changeTurn()
         self.displayTheWinner()
         # someone_won will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
     def displayGameState(self) -> None:
-        print('\n')
         print(self.board)
 
     def someoneWon(self) -> bool:

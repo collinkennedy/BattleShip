@@ -18,11 +18,13 @@ class Board:
         for i, row in enumerate(self):
             rep += str(i) + sep + sep.join(row) + '\n'
         return rep
+
         #sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
         #rep = sep * 2 + sep.join((str(i) for i in range(self.numCols))) + '\n'
         #for row_index, row in enumerate(self):
         #    rep += str(row_index) + sep + sep.join(row) + '\n'
         #return rep
+
         #for i in range(7):
         #    for j in range(1):
         #        print('* ' * 7)

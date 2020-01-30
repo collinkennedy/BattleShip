@@ -15,6 +15,7 @@ if __name__ == '__main__':
             lines = file.readlines()
             for i, line in enumerate(lines):
                 if i == 0:
-                    a, b = int(line.split(' '))
+                    dimensionsString = str(line)
+                    a, b = int(dimensionsString.split(' '))
     game = game_class.Game(a, b, '*')
     game.play()

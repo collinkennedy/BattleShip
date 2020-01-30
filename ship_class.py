@@ -19,7 +19,8 @@ class Ship:
                     continue
                 else:
                     shipName, shipSize = line.split(" ")
-                    shipSize[:-2]
+                    if len(shipSize) > 1:
+                        shipSize = shipSize[:-1]
                     dictOfShips[shipName] = shipSize
         return dictOfShips
 

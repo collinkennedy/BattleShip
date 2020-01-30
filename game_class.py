@@ -18,9 +18,10 @@ class Game:
 
     def play(self) -> None:
        while not self.someoneWon():
-           print("---------------------------")
-           print("model board")
-           self.displayGameState()
+           #print("---------------------------")
+           #print("model board")
+           #self.displayGameState()
+
            curPlayer = self.getCurPlayer()
            print("{}'s Scanning Board".format(curPlayer.name))
            print(curPlayer.scanningBoard)
@@ -32,9 +33,10 @@ class Game:
            #else:
            #    curPlayer.playerBoard.findLocation(2,2)
            #curPlayer.takeTurn(self.board)
+
            self.changeTurn()
         #self.displayTheWinner()
-        # someone_won will remain false until hits = counter , when they equal each other, the while loop will end
+        # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
     def displayGameState(self) -> None:

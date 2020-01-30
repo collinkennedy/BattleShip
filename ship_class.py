@@ -1,4 +1,4 @@
-from typing import Iterable, Set, Tuple
+from typing import Iterable, Set, Tuple, Dict
 import sys
 
 class Ship:
@@ -22,8 +22,5 @@ class Ship:
                     dictOfShips[shipSize] = shipName
         return dictOfShips
 
-
-
-
 if __name__ == "__main__":
-    pass
+    print(Ship.readFileShips())

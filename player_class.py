@@ -11,6 +11,7 @@ class Player:
     def __init__(self, otherPlayers: Iterable["Player"], gameBoard : "Board") -> None:
         self.name = self.getNameFromPlayer(otherPlayers)
         self.playerBoard = copy.deepcopy(gameBoard)
+        self.scanningBoard = copy.deepcopy(gameBoard)
 
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:

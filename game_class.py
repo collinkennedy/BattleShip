@@ -4,7 +4,6 @@ from player_class import Player
 from board_class import Board
 from ship_class import Ship
 
-
 class Game:
     def __init__(self, numRows: int, numCols: int, blankChar: str = '*', possibleTotalHits: int = None) -> None:
         self.blankChar = blankChar

@@ -1,8 +1,8 @@
 from typing import Iterable, Set, Tuple, Dict, List
 import sys
-from game_class import Game
-from board_class import Board
-from ship_class import Ship
+#from game_class import Game
+#from board_class import Board
+#from ship_class import Ship
 
 class Player:
     def __init__(self, otherPlayers: Iterable["Player"]) -> None:

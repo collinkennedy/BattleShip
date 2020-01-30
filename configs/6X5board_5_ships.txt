@@ -2,3 +2,5 @@
 Mouse 1
 Cat 3
 Dog 5
+
+[(Mouse, 1), (Cat, 3)]

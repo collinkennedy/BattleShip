@@ -26,6 +26,7 @@ class Game:
         # and someone will have won the game
 
     def displayGameState(self) -> None:
+        print('\n')
         print(self.board)
 
     def someoneWon(self) -> bool:

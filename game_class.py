@@ -1,5 +1,6 @@
 from typing import Iterable, Set, Tuple, Dict, List
 import sys
+import copy
 from player_class import Player
 from board_class import Board
 from ship_class import Ship
@@ -18,8 +19,8 @@ class Game:
     def play(self) -> None:
         while not self.someoneWon():
             self.displayGameState()
-            cur_player = self.getCurPlayer()
-            cur_player.takeTurn(self.board)
+            curPlayer = self.getCurPlayer()
+            curPlayer.takeTurn(self.board)
             self.changeTurn()
         self.displayTheWinner()
         # someone_won will remain false until hits = counter , when they equal each other, the while loop will end
@@ -52,6 +53,7 @@ class Game:
     def displayTheWinner(self):
         if self.someoneWon():
             print(f'{self.getCurPlayer} won the game!')
+    
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-class Ship:
 
-    pass
+
+class Ship:
 
 
 

@@ -17,7 +17,8 @@ class Game:
 
     def play(self) -> None:
         while not self.someoneWon():
-            self.displayGameState()
+            #self.displayGameState()
+            print(self.board)
             cur_player = self.getCurPlayer()
             cur_player.takeTurn(self.board)
             self.changeTurn()

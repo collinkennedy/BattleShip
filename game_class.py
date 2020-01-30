@@ -7,7 +7,7 @@ class Game:
     def __init__(self, dimensions: int, blankChar: str = '*', possibleTotalHits: int = None) -> None:
         self.blankChar = blankChar
         self.possibleTotalHits = None  # this will obviously need to change to what is included in config. file
-        self.board = Board(dimensions, dimensions, blankChar)
+        self.board = Board(numRows, numCols, blankChar)
         self.players = []
         for playerNum in range(2):
             self.players.append(Player(self.players, blankChar))

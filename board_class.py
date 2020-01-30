@@ -7,8 +7,5 @@ class Board:
                 self.contents.append(blankChar)
         self.blank_char = blankChar
 
-
-
-
 if __name__== "__main__":
     pass

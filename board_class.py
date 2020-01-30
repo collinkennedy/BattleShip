@@ -1,5 +1,6 @@
 from typing import Iterable, Iterator, List
 
+
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
         self.contents = []
@@ -18,7 +19,7 @@ class Board:
     def __iter__(self) -> Iterator[List[str]]:
         return iter(self.contents)
 
-    def __getitem__(self, i : int) -> List[str]:
+    def __getitem__(self, i: int) -> List[str]:
         self.contents[i]
 
     @property
@@ -30,6 +31,5 @@ class Board:
         return len(self.numRows)
 
 
-
-if __name__== "__main__":
+if __name__ == "__main__":
     pass

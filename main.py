@@ -7,5 +7,5 @@ from ship_class import Ship
 
 if __name__ == '__main__':
     boardDims : Iterable[List] = [6,6]
-    game = Game(boardDims[0], boardDims[1], '*', 5)
+    game = Game(6, 6, '*')
     game.play()

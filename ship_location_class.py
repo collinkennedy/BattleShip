@@ -1,4 +1,4 @@
 
 
-class ShipPlacement:
+class ShipLocation:
     pass

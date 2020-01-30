@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Iterable, List
 
 
 class Board:
@@ -17,7 +17,7 @@ class Board:
             rep += str(i) + sep + sep.join(row) + '\n'
         return rep
 
-    def __iter__(str) -> Iterable[List[str]]:
+    def __iter__(self) -> Iterable[List[str]]:
         return iter(self.contents)
 
     @property

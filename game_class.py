@@ -1,6 +1,8 @@
-from board_class import Board
-import game_class
+from typing import Iterable, Set, Tuple, Dict, List
+import sys
 from player_class import Player
+from board_class import Board
+from ship_class import Ship
 
 
 class Game:
@@ -10,7 +12,8 @@ class Game:
         self.board = Board(numRows, numCols, blankChar)
         self.players = []
         for playerNum in range(2):
-            self.players.append(Player(self.players, blankChar))
+            self.players.append(Player(self.players))
+            print(self.players)
         self._curPlayerTurn = 0
 
     def play(self) -> None:

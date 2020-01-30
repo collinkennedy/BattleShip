@@ -1,5 +1,5 @@
-from typing import Iterable, Iterator, List
-
+from typing import Iterator, List
+from ship_class import Ship
 
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
@@ -19,7 +19,7 @@ class Board:
     def __iter__(self) -> Iterator[List[str]]:
         return iter(self.contents)
 
-    def __getitem__(self, i: int) -> List[str]:
+    def __getitem__(self, i : int) -> List[str]:
         self.contents[i]
 
     @property
@@ -30,6 +30,11 @@ class Board:
     def numRows(self):
         return len(self.numRows)
 
+    def boundCheck(self, ship :"Ship", row :int, col :int):
+        #call this method each time user places a ship
+        #checks if the entirety of the ship being placed
+        #will fit in bounds
+        pass
 
-if __name__ == "__main__":
+if __name__== "__main__":
     pass

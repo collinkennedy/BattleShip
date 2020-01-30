@@ -7,29 +7,25 @@ from ship_class import Ship
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
         self.contents = []
-        for row in range(numRows):
-            for col in range(numCols):
-                self.contents.append(blankChar)
+        self.numCols = numCols
+        self.numRows = numRows
         self.blankChar = blankChar
+        self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]   
+        
+    @property
+    def numCols(self):
+        return len(self.numCols)
+
+    @property
+    def numRows(self):
+        return len(self.numRows)
 
     def __str__(self) -> str:
-        sep = ' ' * 1
-        rep = sep * 2 + sep.join((str(i) for i in range(2))) + '\n'
-        for i, row in enumerate(self):
-            rep += str(i) + sep + sep.join(row) + '\n'
+        sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
+        rep = sep * 2 + sep.join((str(i) for i in range(self.numCols))) + '\n'
+        for row_index, row in enumerate(self):
+            rep += str(row_index) + sep + sep.join(row) + '\n'
         return rep
-
-        #sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
-        #rep = sep * 2 + sep.join((str(i) for i in range(self.numCols))) + '\n'
-        #for row_index, row in enumerate(self):
-        #    rep += str(row_index) + sep + sep.join(row) + '\n'
-        #return rep
-
-        #for i in range(7):
-        #    for j in range(1):
-        #        print('* ' * 7)
-
-
 
     def __iter__(self) -> Iterator[List[str]]:
         return iter(self.contents)
@@ -37,11 +33,11 @@ class Board:
     def __getitem__(self, i: int) -> List[str]:
         self.contents[i]
 
-    @property
+    #@property
     def numCols(self):
         return len(self.numCols)
 
-    @property
+    #@property
     def numRows(self):
         return len(self.numRows)
 

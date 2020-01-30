@@ -1,6 +1,11 @@
 class Board:
     
-    pass
+    def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
+        self.contents = []
+        for row in range(numRows):
+            for col in range(numCols):
+                self.contents.append(blankChar)
+        self.blank_char = blankChar
 
 
 

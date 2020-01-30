@@ -3,9 +3,10 @@ import sys
 
 class Ship:
     def __init__(self):
-        self.name = getShipName(listOfShips)
-        self.size = getShipSize(listOfShips)
+        self.name = self.getShipName(listOfShips)
+        self.size = self.getShipSize(listOfShips)
 
+    @staticmethod
     def getShipName() -> str:
         
         pass

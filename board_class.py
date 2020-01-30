@@ -1,8 +1,6 @@
-from typing import Iterable, List
-
+from typing import Iterable, Iterator, List
 
 class Board:
-    
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
         self.contents = []
         for row in range(numRows):
@@ -17,8 +15,11 @@ class Board:
             rep += str(i) + sep + sep.join(row) + '\n'
         return rep
 
-    def __iter__(self) -> Iterable[List[str]]:
+    def __iter__(self) -> Iterator[List[str]]:
         return iter(self.contents)
+
+    def __getitem__(self, i : int) -> List[str]:
+        self.contents[i]
 
     @property
     def numCols(self):

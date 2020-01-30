@@ -1,10 +1,10 @@
 from typing import Iterable, Set, Tuple, Dict, List
 import sys
-import game_class
 #from game_class import Game
 #from player_class import Player
 from board_class import Board
 from ship_class import Ship
+import game_class
 
 if __name__ == '__main__':
     boardDims : Iterable[List] = [6,6]

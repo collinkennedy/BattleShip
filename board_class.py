@@ -1,4 +1,5 @@
-from typing import Iterable, Iterator, List
+from typing import Iterator, List
+from ship_class import Ship
 
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
@@ -29,7 +30,11 @@ class Board:
     def numRows(self):
         return len(self.numRows)
 
-
+    def boundCheck(self, ship :"Ship", row :int, col :int):
+        #call this method each time user places a ship
+        #checks if the entirety of the ship being placed
+        #will fit in bounds
+        pass
 
 if __name__== "__main__":
     pass

@@ -1,8 +1,9 @@
 from typing import Iterable, Set, Tuple, Dict
 import sys
 
+
 class Ship:
-    def __init__(self, index :int):
+    def __init__(self, index: int):
         self.name = self.getShipName(listOfShips)
         self.size = self.getShipSize(listOfShips)
 
@@ -23,6 +24,7 @@ class Ship:
                         shipSize = shipSize[:-1]
                     dictOfShips[shipName] = shipSize
         return dictOfShips
+
 
 if __name__ == "__main__":
     print(Ship.readFileShips())

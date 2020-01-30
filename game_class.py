@@ -52,4 +52,5 @@ class Game:
 
 
 if __name__ == "__main__":
-    pass
+    newGame = Game(10,10)
+    newGame.displayGameState()

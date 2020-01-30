@@ -1,4 +1,4 @@
-from typing import Iterable, Set, Tuple, Dict
+from typing import Iterable, Set, Tuple, Dict, List
 import sys
 #from game_class import Game
 #from player_class import Player
@@ -9,10 +9,12 @@ class Ship:
     def __init__(self, index: int):
         self.name = self.getShipName(listOfShips)
         self.size = self.getShipSize(listOfShips)
+        self.location : List[int] = None
+        self.orientation : str = None # h or v
 
     @staticmethod
     def getShipName() -> str:
-        pass
+        return self.name
 
     @staticmethod
     def readFileShips() -> Iterable[Dict]:

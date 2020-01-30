@@ -1,7 +1,7 @@
 from typing import Iterable, Set, Tuple, Dict, List, Iterator
 import sys
 #from game_class import Game
-from player_class import Player
+#from player_class import Player
 from ship_class import Ship
 
 class Board:
@@ -46,6 +46,10 @@ class Board:
         # checks if the entirety of the ship being placed
         # will fit in bounds
         pass
+
+    def findLocation(self, xCoord : int, yCoord : int):
+        self.contents[xCoord][yCoord] = 'X'
+                
 
 
 if __name__ == "__main__":

@@ -7,8 +7,8 @@ class Ship:
         self.shipSize = shipSize
         self.locationX: int = 0
         self.locationY: int = 0
-        self.placementPosX: List[int]
-        self.placementPosY: List[int]
+        self.placementPosX: List[int] = []
+        self.placementPosY: List[int] = []
         self.orientation: str = None # h or v
         self.shipLetter: str = '?'
         #listOfShips that contains all the players ships from the config file dictionary

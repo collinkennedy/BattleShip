@@ -11,6 +11,7 @@ class Ship:
         self.shipSize = shipSize
         self.location: List[int] = []
         self.orientation: str = None # h or v
+        self.shipLetter: str = '?'
         #listOfShips that contains all the players ships from the config file dictionary
 
     @staticmethod

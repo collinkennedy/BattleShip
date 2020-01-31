@@ -27,7 +27,7 @@ class Game:
 
         curPlayer = self.getCurPlayer()
 
-        self.placeShips()
+        self.takeShips()
         print("{}'s Scanning Board".format(curPlayer.name))
         print(curPlayer.scanningBoard)
         print("{}'s Ship Board".format(curPlayer.name))
@@ -44,12 +44,15 @@ class Game:
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
-    def placeShips(self):
+    def takeShips(self):
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
                 player.listOfPlayerShips[ship].location.append(int(x))
                 player.listOfPlayerShips[ship].location.append(int(y))
+                player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].name[0]
+                player.listOfPlayerShips[ship].orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].name}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
+            player.playerBoard.placeShips()
          pass
 
     def displayGameState(self) -> None:

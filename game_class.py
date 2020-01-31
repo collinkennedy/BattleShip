@@ -50,9 +50,9 @@ class Game:
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
-                if (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                if (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
                     raise ArithmeticError("We fricked up (x)")
-                if (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                if (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
                     raise ArithmeticError("We fricked up (y)")
                 player.listOfPlayerShips[ship].locationX = int(x)
                 player.listOfPlayerShips[ship].locationY = int(y)

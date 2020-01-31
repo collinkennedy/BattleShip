@@ -9,8 +9,9 @@ class Ship:
     def __init__(self, index: int):
         self.name = self.getShipName(listOfShips)
         self.size = self.getShipSize(listOfShips)
-        self.location : List[int] = None
-        self.orientation : str = None # h or v
+        self.location: List[int] = None
+        self.orientation: str = None # h or v
+        #listOfShips that contains all the players ships from the config file dictionary
 
     @staticmethod
     def getShipName() -> str:
@@ -29,6 +30,10 @@ class Ship:
                         shipSize = shipSize[:-1]
                     dictOfShips[shipName] = shipSize
         return dictOfShips
+
+
+
+
 
 
 if __name__ == "__main__":

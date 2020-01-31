@@ -4,7 +4,7 @@ import sys
 import game_class
 from board_class import Board
 import main
-#from ship_class import Ship
+from ship_class import Ship
 
 
 class Player:
@@ -12,6 +12,18 @@ class Player:
         self.name = self.getNameFromPlayer(otherPlayers)
         self.playerBoard = copy.deepcopy(gameBoard)
         self.scanningBoard = copy.deepcopy(gameBoard)
+
+    @staticmethod
+    def getListOfShips():
+        """loop through the dictionary that is returned by the
+        readFileShips() method, and create ship objects
+
+        """
+        returnedDictOfShips = Ship.readFileShips()
+
+        for shipName, shipSize in returnedDictOfShips.items():
+            #create a ship object with those attributes and store it in a list
+
 
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:

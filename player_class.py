@@ -8,22 +8,24 @@ from ship_class import Ship
 
 
 class Player:
-    def __init__(self, otherPlayers: Iterable["Player"], gameBoard : "Board") -> None:
+    def __init__(self, otherPlayers: Iterable["Player"], gameBoard: "Board") -> None:
         self.name = self.getNameFromPlayer(otherPlayers)
         self.playerBoard = copy.deepcopy(gameBoard)
         self.scanningBoard = copy.deepcopy(gameBoard)
+        self.listOfPlayerShips = []  # contains all the Ship objects read in from the configuration file
 
-    @staticmethod
-    def getListOfShips():
+    def getListOfShips(self):
         """loop through the dictionary that is returned by the
-        readFileShips() method, and create ship objects
+        readFileShips() method in the Ship class, and create ship objects
+        and append those ship objects to the listOfPlayerShips attribute of the Player class (which is a list)
 
         """
         returnedDictOfShips = Ship.readFileShips()
 
         for shipName, shipSize in returnedDictOfShips.items():
-            #create a ship object with those attributes and store it in a list
-
+            # create a ship object with those attributes and store it in a list
+            newShip = Ship(shipName, shipSize)
+            self.listOfPlayerShips.append(newShip)
 
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:
@@ -41,7 +43,7 @@ class Player:
     def __str__(self) -> str:
         return self.name
 
-    #def takeTurn(self, board : "Board"):
+    # def takeTurn(self, board : "Board"):
     #    x = 1
     #    if x == 1:
     #        #set up game

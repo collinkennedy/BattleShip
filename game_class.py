@@ -25,13 +25,13 @@ class Game:
             #print("---------------------------")
             #print("model board")
             #self.displayGameState()
-
+            curPlayer = self.getCurPlayer()
             print("{}'s Scanning Board".format(curPlayer.name))
             print(curPlayer.scanningBoard)
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
             pause = input("Press any key to loop...")
-            curPlayer.changeTurn()
+            self.changeTurn()
 
             # if curPlayer.name == "Bob":
             #    curPlayer.playerBoard.findLocation(4,4)

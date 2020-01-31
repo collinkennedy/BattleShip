@@ -6,9 +6,9 @@ import sys
 
 
 class Ship:
-    def __init__(self, index: int):
-        self.name = self.getShipName(listOfShips)
-        self.size = self.getShipSize(listOfShips)
+    def __init__(self, shipName: str, shipSize: int or str):
+        self.shipName = shipName
+        self.shipSize = shipSize
         self.location: List[int] = None
         self.orientation: str = None # h or v
         #listOfShips that contains all the players ships from the config file dictionary

@@ -48,8 +48,8 @@ class Game:
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
-                player.listOfPlayerShips[ship].location.append(int(x))
-                player.listOfPlayerShips[ship].location.append(int(y))
+                player.listOfPlayerShips[ship].locationX = int(x)
+                player.listOfPlayerShips[ship].locationY = int(y)
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
                 player.listOfPlayerShips[ship].orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
             player.playerBoard.placeShips(player.listOfPlayerShips)

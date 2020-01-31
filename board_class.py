@@ -51,14 +51,14 @@ class Board:
     def placeShips(self, listOfShips : List[Ship]):
         for ship in range(len(listOfShips)):
             if listOfShips[ship].orientation == 'h':
-                x = listOfShips[ship].location[0]
+                x = listOfShips[ship].locationX
                 for i in range(listOfShips[ship].shipSize):
-                    self.contents[x][listOfShips[ship].location[1]] = listOfShips[ship].shipLetter
+                    self.contents[x][listOfShips[ship].locationY] = listOfShips[ship].shipLetter
                     x += 1
             elif listOfShips[ship].orientation == 'v':
-                y = listOfShips[ship].location[1]
+                y = listOfShips[ship].locationY
                 for j in range(listOfShips[ship].shipSize):
-                    self.contents[listOfShips[ship].location[0]][y] = listOfShips[ship].shipLetter
+                    self.contents[listOfShips[ship].locationX][y] = listOfShips[ship].shipLetter
                     y += 1
 
         #self.contents[xCoord][yCoord] = 'X'

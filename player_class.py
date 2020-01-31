@@ -26,6 +26,7 @@ class Player:
             # create a ship object with those attributes and store it in a list
             newShip = Ship(shipName, shipSize)
             self.listOfPlayerShips.append(newShip)
+        print(self.listOfPlayerShips)
 
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:

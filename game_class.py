@@ -15,19 +15,23 @@ class Game:
         for playerNum in range(2):
             self.players.append(Player(self.players, self.board))
             print(self.players)
+            self.players[playerNum].getListOfShips()
         self._curPlayerTurn = 0
 
     def play(self) -> None:
-        while not self.someoneWon():
+        
+        #while not self.someoneWon():
             # print("---------------------------")
             # print("model board")
             # self.displayGameState()
 
-            curPlayer = self.getCurPlayer()
-            print("{}'s Scanning Board".format(curPlayer.name))
-            print(curPlayer.scanningBoard)
-            print("{}'s Ship Board".format(curPlayer.name))
-            print(curPlayer.playerBoard)
+        curPlayer = self.getCurPlayer()
+
+        self.placeShips()
+        print("{}'s Scanning Board".format(curPlayer.name))
+        print(curPlayer.scanningBoard)
+        print("{}'s Ship Board".format(curPlayer.name))
+        print(curPlayer.playerBoard)
 
             # if curPlayer.name == "Bob":
             #    curPlayer.playerBoard.findLocation(4,4)
@@ -35,10 +39,16 @@ class Game:
             #    curPlayer.playerBoard.findLocation(2,2)
             # curPlayer.takeTurn(self.board)
 
-            self.changeTurn()
+        self.changeTurn()
         # self.displayTheWinner()
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
+
+    def placeShips(self):
+         for player in self.players:
+             for ship in player.listOfPlayerShips:
+                coordinates = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ")
+         pass
 
     def displayGameState(self) -> None:
         print(self.board)
@@ -67,6 +77,8 @@ class Game:
     def displayTheWinner(self):
         if self.someoneWon():
             print(f'{self.getCurPlayer} won the game!')
+
+   
 
 
 if __name__ == "__main__":

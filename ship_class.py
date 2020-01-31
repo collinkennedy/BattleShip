@@ -30,11 +30,6 @@ class Ship:
                         shipSize = shipSize[:-1]
                     dictOfShips[shipName] = shipSize
         return dictOfShips
-
-
-
-
-
-
+    
 if __name__ == "__main__":
     print(Ship.readFileShips())

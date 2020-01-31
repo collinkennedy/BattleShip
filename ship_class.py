@@ -29,7 +29,7 @@ class Ship:
                     shipName, shipSize = line.split(" ")
                     if len(shipSize) > 1:
                         shipSize = shipSize[:-1]
-                    dictOfShips[shipName] = shipSize
+                    dictOfShips[shipName] = int(shipSize)
         return dictOfShips
     
 if __name__ == "__main__":

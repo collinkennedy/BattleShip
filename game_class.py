@@ -31,7 +31,7 @@ class Game:
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
             pause = input("Press any key to loop...")
-            self.changeTurn()
+            curPlayer.changeTurn()
 
             # if curPlayer.name == "Bob":
             #    curPlayer.playerBoard.findLocation(4,4)

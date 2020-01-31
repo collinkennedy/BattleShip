@@ -50,10 +50,12 @@ class Game:
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
-                if (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
-                    raise ArithmeticError("We fricked up (x)")
-                if (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
-                    raise ArithmeticError("We fricked up (y)")
+                while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                    x = input("Please enter a value for x that is within bounds: ")
+                    #raise ArithmeticError("We fricked up (x, vertical)")
+                while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                    y = input("Please enter a value for y that is within bounds: ")
+                    #raise ArithmeticError("We fricked up (y, horizontal)")
                 player.listOfPlayerShips[ship].locationX = int(x)
                 player.listOfPlayerShips[ship].locationY = int(y)
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]

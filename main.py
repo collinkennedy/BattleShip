@@ -13,7 +13,7 @@ if __name__ == '__main__':
             lines = file.readlines()
             for i, line in enumerate(lines):
                 if i == 0:
-                    a = int(line[0])
-                    b = int(line[2])
+                    dimStr = line
+                    a, b = int(dimStr.split(" "))
     game = game_class.Game(a, b, '*')
     game.play()

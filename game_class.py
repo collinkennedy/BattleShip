@@ -49,7 +49,12 @@ class Game:
                 while (orientation != 'h' or 'v'):
                     orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
                 player.listOfPlayerShips[ship].orientation = orientation
-            player.playerBoard.placeShips(player.listOfPlayerShips)
+                player.playerBoard.placeShips(player.listOfPlayerShips[ship])
+                print(player.listOfPlayerShips[ship].shipName)
+                print(player.listOfPlayerShips[ship].placementPosX)
+                print(player.listOfPlayerShips[ship].placementPosY)
+
+            #player.playerBoard.placeShips(player.listOfPlayerShips[ship])
 
     def displayGameState(self) -> None:
         print(self.board)

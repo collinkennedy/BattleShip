@@ -46,20 +46,35 @@ class Board:
         # will fit in bounds
         pass
 
-    def placeShips(self, listOfShips : List[Ship]): # takes player ship object from the list passed to it, and uses the assigned location to place the ship on the playerBoard
-        for ship in range(len(listOfShips)):
-            if listOfShips[ship].orientation == 'h':
-                x = listOfShips[ship].locationX
-                y = listOfShips[ship].locationY
-                for i in range(listOfShips[ship].shipSize):
-                    self.contents[x][y] = listOfShips[ship].shipLetter
-                    y += 1
-            elif listOfShips[ship].orientation == 'v':
-                x = listOfShips[ship].locationX
-                y = listOfShips[ship].locationY
-                for j in range(listOfShips[ship].shipSize):
-                    self.contents[x][y] = listOfShips[ship].shipLetter
-                    x += 1
+    def placeShips(self, ship : Ship):#listOfShips : List[Ship]): # takes player ship object from the list passed to it, and uses the assigned location to place the ship on the playerBoard
+        #for ship in range(len(listOfShips)):
+        #    if listOfShips[ship].orientation == 'h':
+        #        x = listOfShips[ship].locationX
+        #        y = listOfShips[ship].locationY
+        #        for i in range(listOfShips[ship].shipSize):
+        #            self.contents[x][y] = listOfShips[ship].shipLetter
+        #            y += 1
+        #    elif listOfShips[ship].orientation == 'v':
+        #        x = listOfShips[ship].locationX
+        #        y = listOfShips[ship].locationY
+        #        for j in range(listOfShips[ship].shipSize):
+        #            self.contents[x][y] = listOfShips[ship].shipLetter
+        #            x += 1
+        if ship.orientation == 'h':
+            x = ship.locationX
+            y = ship.locationY
+            for i in range(ship.shipSize):
+                self.contents[x][y] = ship.shipLetter
+                ship.placementPosY[i].append(y)
+                y += 1
+        elif ship.orientation == 'v':
+            x = ship.locationX
+            y = ship.locationY
+            for j in range(ship.shipSize):
+                self.contents[x][y] = ship.shipLetter
+                ship.placementPosX[i].append(x)
+                x += 1
+
 
 if __name__ == "__main__":
     pass

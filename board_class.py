@@ -1,8 +1,9 @@
 from typing import Iterable, Set, Tuple, Dict, List, Iterator
 import sys
-#from game_class import Game
-#from player_class import Player
+# from game_class import Game
+# from player_class import Player
 from ship_class import Ship
+
 
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
@@ -10,8 +11,8 @@ class Board:
         self.numCols = numCols
         self.numRows = numRows
         self.blankChar = blankChar
-        self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]   
-        
+        self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]
+
     @property
     def numCols(self):
         return len(self.numCols)
@@ -33,11 +34,11 @@ class Board:
     def __getitem__(self, i: int) -> List[str]:
         self.contents[i]
 
-    #@property
+    # @property
     def numCols(self):
         return len(self.numCols)
 
-    #@property
+    # @property
     def numRows(self):
         return len(self.numRows)
 
@@ -47,9 +48,8 @@ class Board:
         # will fit in bounds
         pass
 
-    def findLocation(self, xCoord : int, yCoord : int):
+    def findLocation(self, xCoord: int, yCoord: int):
         self.contents[xCoord][yCoord] = 'X'
-                
 
 
 if __name__ == "__main__":

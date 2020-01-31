@@ -20,18 +20,18 @@ class Game:
 
     def play(self) -> None:
         
-        #while not self.someoneWon():
-            # print("---------------------------")
-            # print("model board")
-            # self.displayGameState()
+        while not self.someoneWon():
+            #print("---------------------------")
+            #print("model board")
+            #self.displayGameState()
 
-        curPlayer = self.getCurPlayer()
+            curPlayer = self.getCurPlayer()
 
-        self.takeShips()
-        print("{}'s Scanning Board".format(curPlayer.name))
-        print(curPlayer.scanningBoard)
-        print("{}'s Ship Board".format(curPlayer.name))
-        print(curPlayer.playerBoard)
+            self.takeShips()
+            print("{}'s Scanning Board".format(curPlayer.name))
+            print(curPlayer.scanningBoard)
+            print("{}'s Ship Board".format(curPlayer.name))
+            print(curPlayer.playerBoard)
 
             # if curPlayer.name == "Bob":
             #    curPlayer.playerBoard.findLocation(4,4)

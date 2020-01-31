@@ -12,6 +12,8 @@ class Game:
         self.possibleTotalHits = None  # this will obviously need to change to what is included in config. file
         self.board = Board(numRows, numCols, blankChar)
         self.players = []
+        self.maxX = numRows - 1
+        self.maxY = numCols - 1
         for playerNum in range(2):
             self.players.append(Player(self.players, self.board))
             print(self.players)
@@ -48,6 +50,10 @@ class Game:
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
+                if (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                    raise ArithmeticError("We fricked up (x)")
+                if (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                    raise ArithmeticError("We fricked up (y)")
                 player.listOfPlayerShips[ship].locationX = int(x)
                 player.listOfPlayerShips[ship].locationY = int(y)
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]

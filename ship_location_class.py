@@ -5,5 +5,8 @@ from player_class import Player
 from board_class import Board
 from ship_class import Ship
 
+
 class ShipLocation:
-    pass
+    # use this class to define all the methods concerned with placing ships on the board
+    def __init__(self, listOfShips: List[object]):
+        pass

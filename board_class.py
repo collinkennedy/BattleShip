@@ -50,12 +50,12 @@ class Board:
 
     def placeShips(self, listOfShips : List[Ship]):
         for ship in range(len(listOfShips)):
-            if player.listOfShips[ship].orientation == 'h':
+            if listOfShips[ship].orientation == 'h':
                 x = listOfShips.location[0]
                 for i in range(listOfShips[ship].shipSize):
                     self.contents[x][listOfShips.location[1]] = listOfShips[ship].shipLetter
                     x += 1
-            elif player.listOfShips[ship].orientation == 'v':
+            elif listOfShips[ship].orientation == 'v':
                 y = listOfShips.location[1]
                 for j in range(listOfShips[ship].shipSize):
                     self.contents[listOfShips.location[0]][y] = listOfShips[ship].shipLetter

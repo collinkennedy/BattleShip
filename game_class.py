@@ -62,6 +62,8 @@ class Game:
                 orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
                 while (orientation != 'h' or orientation != 'v'):
                     orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
+                    if orientation == 'h' or 'v':
+                        break
                 player.listOfPlayerShips[ship].orientation = orientation
             player.playerBoard.placeShips(player.listOfPlayerShips)
          pass

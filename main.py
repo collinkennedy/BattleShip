@@ -14,6 +14,6 @@ if __name__ == '__main__':
             for i, line in enumerate(lines):
                 if i == 0:
                     dimStr = line
-                    a, b = int(dimStr.split(" "))
-    game = game_class.Game(a, b, '*')
+                    a, b = dimStr.split(" ")
+    game = game_class.Game(int(a), int(b), '*')
     game.play()

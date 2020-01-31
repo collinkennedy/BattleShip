@@ -47,40 +47,52 @@ class Board:
         # will fit in bounds
         pass
 
-    def placeShips(self, ship : Ship):#listOfShips : List[Ship]): # takes player ship object from the list passed to it, and uses the assigned location to place the ship on the playerBoard
-        #for ship in range(len(listOfShips)):
-        #    if listOfShips[ship].orientation == 'h':
-        #        x = listOfShips[ship].locationX
-        #        y = listOfShips[ship].locationY
-        #        for i in range(listOfShips[ship].shipSize):
-        #            self.contents[x][y] = listOfShips[ship].shipLetter
-        #            y += 1
-        #    elif listOfShips[ship].orientation == 'v':
-        #        x = listOfShips[ship].locationX
-        #        y = listOfShips[ship].locationY
-        #        for j in range(listOfShips[ship].shipSize):
-        #            self.contents[x][y] = listOfShips[ship].shipLetter
-        #            x += 1
-        if ship.orientation == 'h':
-            x = ship.locationX
-            y = ship.locationY
+    def placeShips(self, ship : Ship, tempX : int, tempY : int, tempOrientation : str):
+        if takenCoords != []:
+            testingCoords = True
+            testableCoords = []
             for i in range(ship.shipSize):
-                self.contents[x][y] = ship.shipLetter
-                ship.placementPosX.append(x)
-                ship.placementPosY.append(y)
-                y += 1
-        elif ship.orientation == 'v':
-            x = ship.locationX
-            y = ship.locationY
-            for j in range(ship.shipSize):
-                self.contents[x][y] = ship.shipLetter
-                ship.placementPosX.append(x)
-                ship.placementPosY.append(y)
-                x += 1
-        zipper = zip(ship.placementPosX, ship.placementPosY)
-        for posX, posY in zipper:
-            self.takenCoords.append((posX, posY))
-        print(self.takenCoords)
+                testableCoords.append(tuple(tempX, tempY))
+                if ship.orientation == 'h':
+                    tempY += 1
+                elif ship.orientation == 'v':
+                    tempX += 1
+            print(testableCoords)
+            while testingCoords:
+                for testableCoordsTuple in testableCoords:
+                    for i in self.takenCoords:
+                        if testableCoordsTuple == self.takenCoords[i]:
+                            tempX, tempY = input("Please enter a non-overlapping position: ").split(",")
+                            testableCoords = []
+                            for i in range(ship.shipSize):
+                                testableCoords.append(tuple(tempX, tempY))
+                                if ship.orientation == 'h':
+                                    tempY += 1
+                                elif ship.orientation == 'v':
+                                    tempX += 1
+                        else:
+                            testingCoords = False
+        else:
+            if ship.orientation == 'h':
+                x = tempX
+                y = tempY
+                for i in range(ship.shipSize):
+                    self.contents[x][y] = ship.shipLetter
+                    ship.placementPosX.append(x)
+                    ship.placementPosY.append(y)
+                    y += 1
+            elif ship.orientation == 'v':
+                x = tempX
+                y = tempY
+                for j in range(ship.shipSize):
+                    self.contents[x][y] = ship.shipLetter
+                    ship.placementPosX.append(x)
+                    ship.placementPosY.append(y)
+                    x += 1
+            zipper = zip(ship.placementPosX, ship.placementPosY)
+            for posX, posY in zipper:
+                self.takenCoords.append((posX, posY))
+            print(self.takenCoords)
 
 
 if __name__ == "__main__":

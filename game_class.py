@@ -37,19 +37,19 @@ class Game:
     def takeShips(self): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
+                player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
                 while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
                     x = input("Please enter a value for x that is within bounds: ")
                 while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
                     y = input("Please enter a value for y that is within bounds: ")
-                player.listOfPlayerShips[ship].locationX = int(x)
-                player.listOfPlayerShips[ship].locationY = int(y)
-                player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
+                tempX = int(x)
+                tempY = int(y)
                 orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
                 while orientation != 'h' and orientation != 'v':
                     orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
-                player.listOfPlayerShips[ship].orientation = orientation
-                player.playerBoard.placeShips(player.listOfPlayerShips[ship])
+                tempOrientation = orientation
+                player.playerBoard.placeShips(player.listOfPlayerShips[ship], tempX, tempY, tempOrientation)
                 print(player.listOfPlayerShips[ship].shipName)
                 print(player.listOfPlayerShips[ship].placementPosX)
                 print(player.listOfPlayerShips[ship].placementPosY)

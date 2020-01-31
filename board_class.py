@@ -9,6 +9,7 @@ class Board:
         self.numCols = numCols
         self.numRows = numRows
         self.blankChar = blankChar
+        self.takenCoords = []
         self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]
 
     @property
@@ -76,6 +77,10 @@ class Board:
                 ship.placementPosX.append(x)
                 ship.placementPosY.append(y)
                 x += 1
+        zipper = zip(ship.placementPosX, ship.placementPosY)
+        for posX, posY in zipper:
+            self.takenCoords.append((posX, posY))
+        print(self.takenCoords)
 
 
 if __name__ == "__main__":

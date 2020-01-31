@@ -46,8 +46,10 @@ class Game:
 
     def placeShips(self):
          for player in self.players:
-             for ship in range(len(player.listOfPlayerShips)):
-                coordinates = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ")
+            for ship in range(len(player.listOfPlayerShips)):
+                x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
+                player.listOfPlayerShips[ship].location.append(int(x))
+                player.listOfPlayerShips[ship].location.append(int(y))
          pass
 
     def displayGameState(self) -> None:

@@ -19,19 +19,18 @@ class Game:
         self._curPlayerTurn = 0
 
     def play(self) -> None:
-        
+        curPlayer = self.getCurPlayer()
+        self.takeShips()
         while not self.someoneWon():
             #print("---------------------------")
             #print("model board")
             #self.displayGameState()
 
-            curPlayer = self.getCurPlayer()
-
-            self.takeShips()
             print("{}'s Scanning Board".format(curPlayer.name))
             print(curPlayer.scanningBoard)
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
+            pause = input("Press any key to loop...")
             self.changeTurn()
 
             # if curPlayer.name == "Bob":

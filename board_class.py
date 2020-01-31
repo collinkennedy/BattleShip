@@ -72,7 +72,7 @@ class Board:
                                     tempX += 1
                         else:
                             testingCoords = False
-        else:
+        else: #possibly not going into here
             if ship.orientation == 'h':
                 x = tempX
                 y = tempY

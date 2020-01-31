@@ -48,7 +48,7 @@ class Board:
         pass
 
     def placeShips(self, ship : Ship, tempX : int, tempY : int, tempOrientation : str):
-        if takenCoords != []:
+        if self.takenCoords != []:
             testingCoords = True
             testableCoords = []
             for i in range(ship.shipSize):

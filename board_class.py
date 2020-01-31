@@ -1,7 +1,5 @@
 from typing import Iterable, Set, Tuple, Dict, List, Iterator
 import sys
-# from game_class import Game
-# from player_class import Player
 from ship_class import Ship
 
 
@@ -48,7 +46,7 @@ class Board:
         # will fit in bounds
         pass
 
-    def placeShips(self, listOfShips : List[Ship]):
+    def placeShips(self, listOfShips : List[Ship]): # takes player ship object from the list passed to it, and uses the assigned location to place the ship on the playerBoard
         for ship in range(len(listOfShips)):
             if listOfShips[ship].orientation == 'h':
                 x = listOfShips[ship].locationX
@@ -62,9 +60,6 @@ class Board:
                 for j in range(listOfShips[ship].shipSize):
                     self.contents[x][y] = listOfShips[ship].shipLetter
                     x += 1
-
-        #self.contents[xCoord][yCoord] = 'X'
-
 
 if __name__ == "__main__":
     pass

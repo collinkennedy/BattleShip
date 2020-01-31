@@ -1,9 +1,5 @@
 from typing import Iterable, Set, Tuple, Dict, List
 import sys
-#from game_class import Game
-#from player_class import Player
-#from board_class import Board
-
 
 class Ship:
     def __init__(self, shipName: str, shipSize: int or str):
@@ -34,4 +30,4 @@ class Ship:
         return dictOfShips
     
 if __name__ == "__main__":
-    print(Ship.readFileShips())
+    pass

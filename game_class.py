@@ -5,7 +5,6 @@ from player_class import Player
 from board_class import Board
 from ship_class import Ship
 
-
 class Game:
     def __init__(self, numRows: int, numCols: int, blankChar: str = '*', possibleTotalHits: int = None) -> None:
         self.blankChar = blankChar
@@ -20,13 +19,10 @@ class Game:
             self.players[playerNum].getListOfShips()
         self._curPlayerTurn = 0
 
-    def play(self) -> None:
+    def play(self) -> None: # game loop that handles playing the game
         curPlayer = self.getCurPlayer()
         self.takeShips()
         while not self.someoneWon():
-            #print("---------------------------")
-            #print("model board")
-            #self.displayGameState()
             curPlayer = self.getCurPlayer()
             print("{}'s Scanning Board".format(curPlayer.name))
             print(curPlayer.scanningBoard)
@@ -34,71 +30,44 @@ class Game:
             print(curPlayer.playerBoard)
             pause = input("Press any key to loop...")
             self.changeTurn()
-
-            # if curPlayer.name == "Bob":
-            #    curPlayer.playerBoard.findLocation(4,4)
-            # else:
-            #    curPlayer.playerBoard.findLocation(2,2)
-            # curPlayer.takeTurn(self.board)
-
-        
-        # self.displayTheWinner()
+        self.displayTheWinner()
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
-    def takeShips(self):
+    def takeShips(self): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
                 while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
                     x = input("Please enter a value for x that is within bounds: ")
-                    #raise ArithmeticError("We fricked up (x, vertical)")
                 while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
                     y = input("Please enter a value for y that is within bounds: ")
-                    #raise ArithmeticError("We fricked up (y, horizontal)")
                 player.listOfPlayerShips[ship].locationX = int(x)
                 player.listOfPlayerShips[ship].locationY = int(y)
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
                 orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
                 while (orientation != 'h' or 'v'):
                     orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
-                    #if orientation == 'h' or 'v':
-                    #    break
                 player.listOfPlayerShips[ship].orientation = orientation
             player.playerBoard.placeShips(player.listOfPlayerShips)
-         pass
 
     def displayGameState(self) -> None:
         print(self.board)
 
     def someoneWon(self) -> bool:
-        """
-
-        :return:
-        """
-        # include a counter, if hit's = counter, then somebody has won the game
+        # include a counter, if hits = counter, then somebody has won the game
         # checks each players hits. whoever has hits= counter is printed as the winner
-        #
-
         return None
 
-    def changeTurn(self) -> None:
+    def changeTurn(self) -> None: # switches player turn
         self._curPlayerTurn = (self._curPlayerTurn + 1) % 2
-        # if self._cur_player_turn == 0:
-        #     self._cur_player_turn = 1
-        # else:
-        #     self._cur_player_turn = 0
-
-    def getCurPlayer(self) -> "Player":
+        
+    def getCurPlayer(self) -> "Player": # returns current player
         return self.players[self._curPlayerTurn]
 
     def displayTheWinner(self):
         if self.someoneWon():
             print(f'{self.getCurPlayer} won the game!')
 
-   
-
-
 if __name__ == "__main__":
-    newGame = Game(10, 10)
-    newGame.displayGameState()
+    pass

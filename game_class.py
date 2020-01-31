@@ -32,6 +32,7 @@ class Game:
             print(curPlayer.scanningBoard)
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
+            self.changeTurn()
 
             # if curPlayer.name == "Bob":
             #    curPlayer.playerBoard.findLocation(4,4)
@@ -39,7 +40,7 @@ class Game:
             #    curPlayer.playerBoard.findLocation(2,2)
             # curPlayer.takeTurn(self.board)
 
-        self.changeTurn()
+        
         # self.displayTheWinner()
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game

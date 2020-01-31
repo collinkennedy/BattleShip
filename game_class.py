@@ -52,7 +52,7 @@ class Game:
                 player.listOfPlayerShips[ship].location.append(int(y))
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].name[0]
                 player.listOfPlayerShips[ship].orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].name}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
-            player.playerBoard.placeShips()
+            player.playerBoard.placeShips(player.listOfPlayerShips)
          pass
 
     def displayGameState(self) -> None:

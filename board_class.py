@@ -61,7 +61,7 @@ class Board:
                     self.contents[listOfShips.location[0]][y] = listOfShips[ship].shipLetter
                     y += 1
 
-        self.contents[xCoord][yCoord] = 'X'
+        #self.contents[xCoord][yCoord] = 'X'
 
 
 if __name__ == "__main__":

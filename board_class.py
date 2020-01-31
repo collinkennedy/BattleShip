@@ -65,14 +65,14 @@ class Board:
             y = ship.locationY
             for i in range(ship.shipSize):
                 self.contents[x][y] = ship.shipLetter
-                ship.placementPosY[i].append(y)
+                ship.placementPosY.append(y)
                 y += 1
         elif ship.orientation == 'v':
             x = ship.locationX
             y = ship.locationY
             for j in range(ship.shipSize):
                 self.contents[x][y] = ship.shipLetter
-                ship.placementPosX[i].append(x)
+                ship.placementPosX.append(x)
                 x += 1
 
 

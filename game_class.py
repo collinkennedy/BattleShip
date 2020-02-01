@@ -41,7 +41,7 @@ class Game:
             pause = input("Press any key to loop...")
             if (curPlayer.hitCounter == self.possibleTotalHits):
                 self.displayTheWinner(curPlayer)
-                someoneWon(True)
+                self.someoneWon(True)
             self.changeTurn()
         
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end

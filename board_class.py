@@ -3,6 +3,7 @@ import sys
 from ship_class import Ship
 
 
+
 class Board:
     def __init__(self, numRows: int, numCols: int, blankChar: str) -> None:
         self.contents = []
@@ -47,24 +48,24 @@ class Board:
         # will fit in bounds
         pass
 
-    def badValues(self, ship : Ship, x, y) -> bool:
-        if ship.orientation == 'h': #y varies here, x does not need to change
+    def badValues(self, ship: Ship, x, y, board: "Board") -> bool:
+        if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):
-                if (self.contents[x][y] != self.blankChar): #if the location provided is occupied, return true
-                    return True #your values suck
+                if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
+                    return True  # your values suck
                 y += 1
-            return False #good job
-        elif ship.orientation == 'v': #x varies here
+            return False  # good job
+        elif ship.orientation == 'v':  # x varies here
             for i in range(ship.shipSize):
-                if (self.contents[x][y] != self.blankChar): #if the location provided is occupied, return true
-                    return True #your values suck
+                if self.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
+                    return True  # your values suck
                 x += 1
-            return False #good job
+            return False  # good job
 
-    def placeShip(self, ship : Ship, x : int, y : int):
+    def placeShip(self, ship: Ship, x: int, y: int):
         pass
 
-    def placeShips(self, ship : Ship, tempX : int, tempY : int, tempOrientation : str):
+    def placeShips(self, ship: Ship, tempX: int, tempY: int, tempOrientation: str):
         if self.takenCoords != []:
             testingCoords = True
             testableCoords = []
@@ -89,7 +90,7 @@ class Board:
                                     tempX += 1
                         else:
                             testingCoords = False
-        else: #possibly not going into here
+        else:  # possibly not going into here
             if ship.orientation == 'h':
                 x = tempX
                 y = tempY

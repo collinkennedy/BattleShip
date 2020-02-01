@@ -55,12 +55,10 @@ class Game:
             for ship in range(len(player.listOfPlayerShips)):
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
 
-                orientation = input(
-                    f"{player.name}, what direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[
-                    0].lower()
-                while orientation != 'h' and orientation != 'v':
-                    orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
-                player.listOfPlayerShips[ship].orientation = orientation
+                orientationInput = input(f"{player.name}, what direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")
+                while orientationInput[0].lower() != 'h' and orientationInput[0].lower != 'v':
+                    orientationInput = input(f"{orientationInput} does not represent an Orientation")
+                player.listOfPlayerShips[ship].orientation = orientationInput[0].lower()
 
                 while True:  # loop until we get valid input for ship placement coordinates
                     try:

@@ -51,10 +51,16 @@ class Board:
             while (int(x) + ship.shipSize - 1) > maxX:
                 enteredX = input("Please enter a value for x that is within bounds: ")
                 x = int(enteredX)
+            while (int(y)) > maxY:
+                enteredY = input("Please enter a value for y that is within bounds: ")
+                y = int(enteredY)
         elif ship.orientation == 'h':
             while (int(y) + ship.shipSize - 1) > maxY:
                 enteredY = input("Please enter a value for y that is within bounds: ")
                 y = int(enteredY)
+            while (int(x)) > maxX:
+                enteredX = input("Please enter a value for x that is within bounds: ")
+                x = int(enteredX)
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):
                 if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true

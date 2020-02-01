@@ -48,7 +48,7 @@ class Game:
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
-    def takeShips(self): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
+    def takeShips(self, x, y): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
@@ -67,6 +67,24 @@ class Game:
                         y = input("Please enter a value for y that is within bounds: ")
                 while player.playerBoard.badValues(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard, self.maxX, self.maxY):
                     x, y = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(",")
+                    if ship.orientation == 'v':
+                        while (int(x) + ship.shipSize - 1) > maxX:
+                            enteredX = input("Please enter a value for x that is within bounds: ")
+                            x = int(enteredX)
+                            print(x, y)
+                        while (int(y)) > maxY:
+                            enteredY = input("Please enter a value for y that is within bounds: ")
+                            y = int(enteredY)
+                            print(x, y)
+                    elif ship.orientation == 'h':
+                        while (int(y) + ship.shipSize - 1) > maxY:
+                            enteredY = input("Please enter a value for y that is within bounds: ")
+                            y = int(enteredY)
+                            print(x, y)
+                        while (int(x)) > maxX:
+                            enteredX = input("Please enter a value for x that is within bounds: ")
+                            x = int(enteredX)
+                            print(x, y)
                 print(int(x), int(y))
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
 

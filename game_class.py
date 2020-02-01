@@ -102,6 +102,7 @@ class Game:
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
                 for i in range(player.listOfPlayerShips[ship].shipSize):
                     player.playerBoard.lettersOnBoard.append(player.listOfPlayerShips[ship].shipName)
+                player.playerBoard.lettersOnBoard.sort()
                 print(player.playerBoard.lettersOnBoard)
             #for row in range(len(player.playerBoard.contents)):
             #    for col in range(len(player.playerBoard.contents[row])):

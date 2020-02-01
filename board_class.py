@@ -46,34 +46,26 @@ class Board:
         # will fit in bounds
         pass
 
-    def badValues(self, ship: Ship, x, y, board: "Board", maxX, maxY) -> bool:
-        #if ship.orientation == 'v':
-        #    while (int(x) + ship.shipSize - 1) > maxX:
-        #        enteredX = input("Please enter a value for x that is within bounds: ")
-        #        x = int(enteredX)
-        #        print(x, y)
-        #    while (int(y)) > maxY:
-        #        enteredY = input("Please enter a value for y that is within bounds: ")
-        #        y = int(enteredY)
-        #        print(x, y)
-        #elif ship.orientation == 'h':
-        #    while (int(y) + ship.shipSize - 1) > maxY:
-        #        enteredY = input("Please enter a value for y that is within bounds: ")
-        #        y = int(enteredY)
-        #        print(x, y)
-        #    while (int(x)) > maxX:
-        #        enteredX = input("Please enter a value for x that is within bounds: ")
-        #        x = int(enteredX)
-        #        print(x, y)
+    def badValues(self, ship: Ship, x, y, board: "Board", maxX, maxY, player) -> bool:
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):
                 if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
+                    myTestY = y
+                    for i in range(ship.shipSize):
+                        player.overlappingShips.append(board.contents[x][myTestY])
+                        myTestY += 1
+                    player.overlappingShips.sort()
                     return True  # your values suck
                 y += 1
             return False  # good job
         elif ship.orientation == 'v':  # x varies here
             for i in range(ship.shipSize):
                 if self.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
+                    myTestX = x
+                    for i in range(ship.shipSize):
+                        player.overlappingShips.append(board.contents[myTestX][y])
+                        myTestX += 1
+                    player.overlappingShips.sort()
                     return True  # your values suck
                 x += 1
             return False  # good job

@@ -14,6 +14,7 @@ class Player:
         self.scanningBoard = copy.deepcopy(gameBoard)
         self.hitCounter = 0
         self.listOfPlayerShips : List[Ship] = []  # contains all the Ship objects read in from the configuration file
+        self.overlappingShips : List[Ship.getShipName[0]] = []
 
     def getListOfShips(self):
         """

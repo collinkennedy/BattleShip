@@ -53,6 +53,7 @@ class Game:
             self):  # asks player for locations and orientation for each ship, and checks boundaries as player enters location
         for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
+                player.overlappingShips = []
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
 
                 orientationInput = input(f"{player.name}, what direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")
@@ -72,31 +73,29 @@ class Game:
                 
                 if player.listOfPlayerShips[ship].orientation == 'v':
                     while (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
-                        x = int(input("Please enter a value for x that is within bounds: "))
+                        x = int(input(f"Please enter a value for x that is within 0 and {self.maxX}: "))
                 elif player.listOfPlayerShips[ship].orientation == 'h':
                     while (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
-                        y = int(input("Please enter a value for y that is within bounds: "))
-                while player.playerBoard.badValues(player.listOfPlayerShips[ship], x, y, player.playerBoard,
-                                                   self.maxX, self.maxY):
-                    ex, ey = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(
-                        ",")
+                        y = int(input(f"Please enter a value for y that is within 0 and {self.maxY}: "))
+                while player.playerBoard.badValues(player.listOfPlayerShips[ship], x, y, player.playerBoard, self.maxX, self.maxY, player):
+                    ex, ey = input(f"Please enter a new set of coordinates that do not overlap with another ship {player.overlappingShips}: ").split(",")
                     x, y = int(ex), int(ey)
                     if player.listOfPlayerShips[ship].orientation == 'v':
                         while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
-                            enteredX = input("Please enter a value for x that is within bounds: ")
+                            enteredX = input(f"Please enter a value for x that is within 0 and {self.maxX}: ")
                             x = int(enteredX)
                             print(x, y)
                         while (int(y)) > self.maxY:
-                            enteredY = input("Please enter a value for y that is within bounds: ")
+                            enteredY = input(f"Please enter a value for y that is within 0 and {self.maxY}: ")
                             y = int(enteredY)
                             print(x, y)
                     elif player.listOfPlayerShips[ship].orientation == 'h':
                         while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
-                            enteredY = input("Please enter a value for y that is within bounds: ")
+                            enteredY = input(f"Please enter a value for y that is within 0 and {self.maxY}: ")
                             y = int(enteredY)
                             print(x, y)
                         while (int(x)) > self.maxX:
-                            enteredX = input("Please enter a value for x that is within bounds: ")
+                            enteredX = input(f"Please enter a value for x that is within 0 and {self.maxX}: ")
                             x = int(enteredX)
                             print(x, y)
 

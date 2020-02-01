@@ -57,9 +57,16 @@ class Player:
             self.scanningBoard.contents[x][y] = 'M'
             print(f"You missed, {self.name}. xD")
         else:
+            temp = otherPlayer.playerBoard.contents[x][y]
             self.scanningBoard.contents[x][y] = 'X'
             otherPlayer.playerBoard.contents[x][y] = 'X'
             print(f"You hit a ship, {self.name}. :/")
+            for i in otherPlayer.playerBoard.lettersOnBoard:
+                if otherPlayer.playerBoard.lettersOnBoard[i] == temp:
+                    del otherPlayer.playerBoard.lettersOnBoard[i]
+                    break
+                else:
+                    print(f"You destroyed")
             self.hitCounter += 1
         pass
 

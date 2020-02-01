@@ -100,12 +100,13 @@ class Game:
                             print(x, y)
 
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
-
-            for row in range(len(player.playerBoard.contents)):
-                for col in range(len(player.playerBoard.contents[row])):
-                    if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:
-                        player.playerBoard.lettersOnBoard.append(player.playerBoard.contents[row][col])
-            print(player.playerBoard.lettersOnBoard)
+            player.playerBoard.lettersOnBoard.append(listOfPlayerShips[ship] * listOfPlayerShips[ship].shipSize)
+            #for row in range(len(player.playerBoard.contents)):
+            #    for col in range(len(player.playerBoard.contents[row])):
+            #        if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:
+            #            player.playerBoard.lettersOnBoard.append(player.playerBoard.contents[row][col])
+            #player.playerBoard.lettersOnBoard.sort()
+            #print(player.playerBoard.lettersOnBoard)
 
     def displayGameState(self) -> None:
         print(self.board)

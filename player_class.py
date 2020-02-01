@@ -34,7 +34,7 @@ class Player:
         while (curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar):
             enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that has NOT been previously fired upon: ").split(',')
             x, y = int(enteredX), int(enteredY)
-        curPlayer.fire(otherPlayer)
+        curPlayer.fire(otherPlayer, x, y)
         pass
 
     def fire(self, otherPlayer : "Player", x : int, y : int):

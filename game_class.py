@@ -62,11 +62,10 @@ class Game:
 
                 while True:  # loop until we get valid input for ship placement coordinates
                     try:
-                        x, y = input(
-                            f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(
-                            ',')
-
+                        userInput = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ")
+                        x, y = userInput.split(',')
                     except ValueError:
+                        print(f"{userInput} is not in the form x, y")
                         continue
                     break
 

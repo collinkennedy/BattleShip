@@ -42,6 +42,8 @@ class Player:
             except IndexError:
                 enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that is on the board: ").split(',')
                 x, y = int(enteredX), int(enteredY)
+            except ValueError:
+                print("Your firing position is invalid.")
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:
@@ -66,9 +68,6 @@ class Player:
 
     def __str__(self) -> str:
         return self.name
-
-    def takeTurn():
-        pass
 
 if __name__ == "__main__":
     pass

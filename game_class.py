@@ -39,8 +39,11 @@ class Game:
             print(curPlayer.playerBoard)
             curPlayer.move()
             pause = input("Press any key to loop...")
+            if (curPlayer.hitCounter == self.possibleTotalHits):
+                self.displayTheWinner(curPlayer)
+                someoneWon(True)
             self.changeTurn()
-        self.displayTheWinner()
+        
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
@@ -67,20 +70,18 @@ class Game:
     def displayGameState(self) -> None:
         print(self.board)
 
-    def someoneWon(self) -> bool:
-        # include a counter, if hits = counter, then somebody has won the game
-        # checks each players hits. whoever has hits= counter is printed as the winner
-        return None
-
     def changeTurn(self) -> None: # switches player turn
         self._curPlayerTurn = (self._curPlayerTurn + 1) % 2
         
     def getCurPlayer(self) -> "Player": # returns current player
         return self.players[self._curPlayerTurn]
 
-    def displayTheWinner(self):
-        if self.someoneWon():
-            print(f'{self.getCurPlayer} won the game!')
+    def someoneWon(self, check : bool):
+        return check
 
+    def displayTheWinner(self, player : "Player"):
+        if self.someoneWon():
+            print(f'{player} won the game!')
+        
 if __name__ == "__main__":
     pass

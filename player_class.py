@@ -12,6 +12,7 @@ class Player:
         self.name = self.getNameFromPlayer(otherPlayers)
         self.playerBoard = copy.deepcopy(gameBoard)
         self.scanningBoard = copy.deepcopy(gameBoard)
+        self.hitCounter = 0
         self.listOfPlayerShips : List[Ship] = []  # contains all the Ship objects read in from the configuration file
 
     def getListOfShips(self):
@@ -43,7 +44,7 @@ class Player:
         else:
             self.scanningBoard.contents[x][y] = 'X'
             otherPlayer.playerBoard.contents[x][y] = 'X'
-
+            self.hitCounter += 1
         pass
 
     @staticmethod

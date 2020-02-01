@@ -47,6 +47,12 @@ class Board:
         pass
 
     def badValues(self, ship: Ship, x, y, board: "Board") -> bool:
+        if player.listOfPlayerShips[ship].orientation == 'v':
+            while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                x = input("Please enter a value for x that is within bounds: ")
+        elif player.listOfPlayerShips[ship].orientation == 'h':
+            while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                y = input("Please enter a value for y that is within bounds: ")
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):
                 if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true

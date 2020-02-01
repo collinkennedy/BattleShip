@@ -48,7 +48,7 @@ class Game:
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game
 
-    def takeShips(self, x, y): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
+    def takeShips(self): # asks player for locations and orientation for each ship, and checks boundaries as player enters location
          for player in self.players:
             for ship in range(len(player.listOfPlayerShips)):
                 player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]

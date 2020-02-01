@@ -49,12 +49,6 @@ class Board:
     def numRows(self):
         return len(self.numRows)
 
-    def boundCheck(self, ship: "Ship", row: int, col: int):
-        # call this method each time user places a ship
-        # checks if the entirety of the ship being placed
-        # will fit in bounds
-        pass
-
     def badValues(self, ship: Ship, x, y, board: "Board", maxX, maxY, player) -> bool:
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):

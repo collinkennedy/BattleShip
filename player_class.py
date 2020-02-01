@@ -29,8 +29,13 @@ class Player:
         print(self.listOfPlayerShips)
 
     def move(self, curPlayer : "Player", otherPlayer : "Player"):
-        enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate to fire upon: ").split(',')
-        x, y = int(enteredX), int(enteredY)
+        while True:
+            try:
+                enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate to fire upon: ").split(',')
+                x, y = int(enteredX), int(enteredY)
+                break
+            except ValueError:
+                print("Your firing position is invalid.")
         begin = True
         while begin:
             try:
@@ -39,11 +44,11 @@ class Player:
                     x, y = int(enteredX), int(enteredY)
                 curPlayer.fire(otherPlayer, x, y)
                 begin = False
-            except ValueError:
-                print("Your firing position is invalid.")
             except IndexError:
                 enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that is on the board: ").split(',')
                 x, y = int(enteredX), int(enteredY)
+            except ValueError:
+                print("Your firing position is invalid.")
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:

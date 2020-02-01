@@ -38,7 +38,7 @@ class Game:
             print(curPlayer.scanningBoard)
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
-            curPlayer.move()
+            curPlayer.move(curPlayer, self.getOtherPlayer())
             pause = input("Press any key to loop...")
             if (curPlayer.hitCounter == self.possibleTotalHits):
                 self.displayTheWinner(curPlayer)
@@ -77,6 +77,12 @@ class Game:
         
     def getCurPlayer(self) -> "Player": # returns current player
         return self.players[self._curPlayerTurn]
+
+    def getOtherPlayer(self) -> "Player": # returns other player
+        if self.getCurPlayer() == self.players[0]:
+            return self.players[1]
+        else:
+            return self.players[0]
 
     def someoneWon(self, check : bool):
         return check

@@ -46,12 +46,12 @@ class Board:
         # will fit in bounds
         pass
 
-    def badValues(self, ship: Ship, x, y, board: "Board") -> bool:
+    def badValues(self, ship: Ship, x, y, board: "Board", maxX, maxY) -> bool:
         if ship.orientation == 'v':
-            while (int(x) + ship.shipSize - 1) > self.maxX:
+            while (int(x) + ship.shipSize - 1) > maxX:
                 x = input("Please enter a value for x that is within bounds: ")
         elif ship.orientation == 'h':
-            while (int(y) + ship.shipSize - 1) > self.maxY:
+            while (int(y) + ship.shipSize - 1) > maxY:
                 y = input("Please enter a value for y that is within bounds: ")
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):

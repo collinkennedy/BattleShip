@@ -52,8 +52,9 @@ class Board:
                 if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
                     myTestY = y
                     for i in range(ship.shipSize):
-                        player.overlappingShips.append(board.contents[x][myTestY])
-                        myTestY += 1
+                        if (self.contents[x][myTestY] != self.blankChar):
+                            player.overlappingShips.append(board.contents[x][myTestY])
+                            myTestY += 1
                     player.overlappingShips.sort()
                     return True  # your values suck
                 y += 1
@@ -63,8 +64,9 @@ class Board:
                 if self.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
                     myTestX = x
                     for i in range(ship.shipSize):
-                        player.overlappingShips.append(board.contents[myTestX][y])
-                        myTestX += 1
+                        if (self.contents[myTestX][y] != self.blankChar):
+                            player.overlappingShips.append(board.contents[myTestX][y])
+                            myTestX += 1
                     player.overlappingShips.sort()
                     return True  # your values suck
                 x += 1

@@ -28,6 +28,7 @@ class Player:
             newShip = Ship(shipName, shipSize)
             self.listOfPlayerShips.append(newShip)
         print(self.listOfPlayerShips)
+        return self.listOfPlayerShips
 
     def move(self, curPlayer : "Player", otherPlayer : "Player"):
         while True:

@@ -9,6 +9,7 @@ class Board:
         self.numRows = numRows
         self.blankChar = blankChar
         self.takenCoords = []
+        self.lettersOnBoard = []
         self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]
 
     @property
@@ -18,6 +19,14 @@ class Board:
     @property
     def numRows(self):
         return len(self.numRows)
+
+    def getListOfShips(self):
+        returnedDictOfShips = Ship.readFileShips()
+        for shipName, shipSize in returnedDictOfShips.items(): # create a ship object with those attributes and store it in a list
+            newShip = Ship(shipName, shipSize)
+            self.listOfPlayerShips.append(newShip)
+        print(self.listOfPlayerShips)
+        return self.listOfPlayerShips
 
     def __str__(self) -> str:
         sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])

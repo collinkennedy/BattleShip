@@ -39,7 +39,6 @@ class Game:
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
             curPlayer.move(curPlayer, self.getOtherPlayer())
-            pause = input("Press any key to loop...")
             if (curPlayer.hitCounter == self.possibleTotalHits):
                 self.displayTheWinner(curPlayer)
                 outerCheck = True

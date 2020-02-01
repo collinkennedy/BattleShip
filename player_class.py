@@ -40,10 +40,11 @@ class Player:
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:
             self.scanningBoard.contents[x][y] = 'M'
-            print("You missed. xD")
+            print(f"You missed, {self.name}. xD")
         else:
             self.scanningBoard.contents[x][y] = 'X'
             otherPlayer.playerBoard.contents[x][y] = 'X'
+            print(f"You hit a ship, {self.name}. :/")
             self.hitCounter += 1
         pass
 

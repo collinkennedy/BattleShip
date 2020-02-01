@@ -48,7 +48,7 @@ class Board:
         # will fit in bounds
         pass
 
-    def badValues(self, ship: Ship, x, y, board: "Board") -> bool:
+    def badValues(self, ship: Ship, x, y, board: Board) -> bool:
         if ship.orientation == 'h':  # y varies here, x does not need to change
             for i in range(ship.shipSize):
                 if board.contents[x][y] != self.blankChar:  # if the location provided is occupied, return true
@@ -62,8 +62,15 @@ class Board:
                 x += 1
             return False  # good job
 
-    def placeShip(self, ship: Ship, x: int, y: int):
-        pass
+    def placeShip(self, ship: Ship, x: int, y: int, board: Board):
+        if ship.orientation == 'h':
+            for i in range(ship.shipSize):
+                board.contents[x][y] = ship.shipLetter
+                y += 1
+        elif ship.orientation == 'v':
+            for i in range(ship.shipSize):
+                board.contents[x][y] = ship.shipLetter
+                x += 1
 
     def placeShips(self, ship: Ship, tempX: int, tempY: int, tempOrientation: str):
         if self.takenCoords != []:

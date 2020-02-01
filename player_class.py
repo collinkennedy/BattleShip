@@ -39,11 +39,11 @@ class Player:
                     x, y = int(enteredX), int(enteredY)
                 curPlayer.fire(otherPlayer, x, y)
                 begin = False
+            except ValueError:
+                print("Your firing position is invalid.")
             except IndexError:
                 enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that is on the board: ").split(',')
                 x, y = int(enteredX), int(enteredY)
-            except ValueError:
-                print("Your firing position is invalid.")
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:

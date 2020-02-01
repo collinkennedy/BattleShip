@@ -67,6 +67,7 @@ class Game:
                         y = input("Please enter a value for y that is within bounds: ")
                 while player.playerBoard.badValues(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard, self.maxX, self.maxY):
                     x, y = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(",")
+                print(int(x), int(y))
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
 
     def displayGameState(self) -> None:

@@ -101,10 +101,10 @@ class Game:
 
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
 
-            for row in player.playerBoard:
+            for row in player.playerBoard.contents:
                 for col in row:
-                    if player.playerBoard[row][col] != player.playerBoard.blankChar:
-                        player.playerBoard.lettersOnBoard.append(player.playerBoard[row][col])
+                    if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:
+                        player.playerBoard.lettersOnBoard.append(player.playerBoard.contents[row][col])
             print(player.playerBoard.lettersOnBoard)
 
     def displayGameState(self) -> None:

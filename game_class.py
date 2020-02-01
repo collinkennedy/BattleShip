@@ -102,7 +102,7 @@ class Game:
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
 
             for row in range(len(player.playerBoard.contents)):
-                for col in row:
+                for col in range(len(player.playerBoard.contents[row])):
                     if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:
                         player.playerBoard.lettersOnBoard.append(player.playerBoard.contents[row][col])
             print(player.playerBoard.lettersOnBoard)

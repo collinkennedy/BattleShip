@@ -100,7 +100,7 @@ class Game:
                             print(x, y)
 
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
-            player.playerBoard.lettersOnBoard.append(listOfPlayerShips[ship] * listOfPlayerShips[ship].shipSize)
+            player.playerBoard.lettersOnBoard.append(player.listOfPlayerShips[ship] * player.listOfPlayerShips[ship].shipSize)
             #for row in range(len(player.playerBoard.contents)):
             #    for col in range(len(player.playerBoard.contents[row])):
             #        if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:

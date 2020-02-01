@@ -59,9 +59,9 @@ class Game:
                 player.listOfPlayerShips[ship].orientation = orientation
 
                 x, y = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ").split(',')
-                while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                while (int(x) + player.listOfPlayerShips[ship].shipSize) > self.maxX:
                     x = input("Please enter a value for x that is within bounds: ")
-                while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                while (int(y) + player.listOfPlayerShips[ship].shipSize) > self.maxY:
                     y = input("Please enter a value for y that is within bounds: ")
                 while player.playerBoard.badValues(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard):
                     x, y = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(",")
@@ -87,8 +87,7 @@ class Game:
         return check
 
     def displayTheWinner(self, player : "Player"):
-        if self.someoneWon():
-            print(f'{player} won the game!')
+        print(f'{player} won the game!')
         
 if __name__ == "__main__":
     pass

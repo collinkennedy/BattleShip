@@ -68,20 +68,20 @@ class Game:
                 while player.playerBoard.badValues(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard, self.maxX, self.maxY):
                     x, y = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(",")
                     if player.listOfPlayerShips[ship].orientation == 'v':
-                        while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > maxX:
+                        while (int(x) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
                             enteredX = input("Please enter a value for x that is within bounds: ")
                             x = int(enteredX)
                             print(x, y)
-                        while (int(y)) > maxY:
+                        while (int(y)) > self.maxY:
                             enteredY = input("Please enter a value for y that is within bounds: ")
                             y = int(enteredY)
                             print(x, y)
                     elif player.listOfPlayerShips[ship].orientation == 'h':
-                        while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > maxY:
+                        while (int(y) + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
                             enteredY = input("Please enter a value for y that is within bounds: ")
                             y = int(enteredY)
                             print(x, y)
-                        while (int(x)) > maxX:
+                        while (int(x)) > self.maxX:
                             enteredX = input("Please enter a value for x that is within bounds: ")
                             x = int(enteredX)
                             print(x, y)

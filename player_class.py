@@ -27,6 +27,25 @@ class Player:
             self.listOfPlayerShips.append(newShip)
         print(self.listOfPlayerShips)
 
+    def move(self, curPlayer : "Player", otherPlayer : "Player"):
+        enteredX, enteredY = input(f"{player.name}, please enter a coordinate to fire upon: ").split(',')
+        x, y = int(enteredX), int(enteredY)
+        while (curPlayer.scanningBoard.contents[x][y] == 'X' or 'M'):
+            enteredX, enteredY = input(f"{player.name}, please enter a coordinate that has NOT been previously fired upon: ").split(',')
+            x, y = int(enteredX), int(enteredY)
+        curPlayer.fire(otherPlayer)
+        pass
+
+    def fire(self, otherPlayer : "Player", x : int, y : int):
+        if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:
+            self.scanningBoard.contents[x][y] = 'M'
+            print("You missed. xD")
+        else:
+            self.scanningBoard.contents[x][y] = 'X'
+            otherPlayer.playerBoard.contents[x][y] = 'X'
+
+        pass
+
     @staticmethod
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:
         alreadyUsedNames = set([player.name for player in otherPlayers])

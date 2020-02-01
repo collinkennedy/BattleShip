@@ -19,7 +19,16 @@ class Game:
             self.players[playerNum].getListOfShips()
         self._curPlayerTurn = 0
 
+    def getMaxHits(self):
+        sum = 0
+        returnedDictOfShips = Ship.readFileShips()
+        for shipSize in returnedDictOfShips.values(): # create a ship object with those attributes and store it in a list
+            sum += shipSize
+        return sum
+
     def play(self) -> None: # game loop that handles playing the game
+        self.possibleTotalHits = self.getMaxHits()
+        print(self.possibleTotalHits) # EXPECT FUCKING 5
         curPlayer = self.getCurPlayer()
         self.takeShips()
         while not self.someoneWon():
@@ -28,6 +37,7 @@ class Game:
             print(curPlayer.scanningBoard)
             print("{}'s Ship Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
+            curPlayer.move()
             pause = input("Press any key to loop...")
             self.changeTurn()
         self.displayTheWinner()
@@ -53,19 +63,6 @@ class Game:
                     x, y = input("Please enter a new set of coordinates that do not overlap with another ship: ").split(",")
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
                 print(player.playerBoard)
-
-                #tempX = int(x)
-                #tempY = int(y)
-                #orientation = input(f"What direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")[0].lower()
-                #while orientation != 'h' and orientation != 'v':
-                #    orientation = input("Please enter either 'h' for horizontal or 'v' for vertical: ")[0].lower()
-                #tempOrientation = orientation
-                #player.playerBoard.placeShips(player.listOfPlayerShips[ship], tempX, tempY, tempOrientation)
-                print(player.listOfPlayerShips[ship].shipName)
-                print(player.listOfPlayerShips[ship].placementPosX)
-                print(player.listOfPlayerShips[ship].placementPosY)
-
-            #player.playerBoard.placeShips(player.listOfPlayerShips[ship])
 
     def displayGameState(self) -> None:
         print(self.board)

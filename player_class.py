@@ -31,7 +31,7 @@ class Player:
     def move(self, curPlayer : "Player", otherPlayer : "Player"):
         enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate to fire upon: ").split(',')
         x, y = int(enteredX), int(enteredY)
-        while (curPlayer.scanningBoard.contents[x][y] == 'X' or 'M'):
+        while (curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar):
             enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that has NOT been previously fired upon: ").split(',')
             x, y = int(enteredX), int(enteredY)
         curPlayer.fire(otherPlayer)

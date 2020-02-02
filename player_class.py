@@ -65,9 +65,8 @@ class Player:
                     otherPlayer.playerBoard.shipsOnBoard[key] -= 1
                     print(f"You hit {key}, {self.name}. :/")
                     print(otherPlayer.playerBoard.shipsOnBoard)
-                if otherPlayer.playerBoard.shipsOnBoard[key] == 0:
-                    print(f"You sunk {otherPlayer.name}'s {key} of size {otherPlayer.playerBoard.UNCHANGEDSHIPSONBOARD[key]}.")
-            
+                    if otherPlayer.playerBoard.shipsOnBoard[key] == 0:
+                        print(f"You sunk {otherPlayer.name}'s {key} of size {otherPlayer.playerBoard.UNCHANGEDSHIPSONBOARD[key]}.")
             self.hitCounter += 1
         pass
 

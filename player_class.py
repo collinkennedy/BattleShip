@@ -60,13 +60,14 @@ class Player:
             temp = otherPlayer.playerBoard.contents[x][y]
             self.scanningBoard.contents[x][y] = 'X'
             otherPlayer.playerBoard.contents[x][y] = 'X'
-            print(f"You hit a ship, {self.name}. :/")
-            for i in otherPlayer.playerBoard.lettersOnBoard:
-                if otherPlayer.playerBoard.lettersOnBoard[i] == temp:
-                    del otherPlayer.playerBoard.lettersOnBoard[i]
-                    break
-                else:
-                    print(f"You destroyed")
+            for key, value in otherPlayer.playerBoard.shipsOnBoard.items():
+                if key.startswith(temp):
+                    otherPlayer.playerBoard.shipsOnBoard[key] -= 1
+                    print(f"You hit {key}, {self.name}. :/")
+                    print(otherPlayer.playerBoard.shipsOnBoard)
+                if otherPlayer.playerBoard.shipsOnBoard[key] == 0:
+                    print(f"You sunk {otherPlayer.name}'s {key} of size {otherPlayer.playerBoard.UNCHANGEDSHIPSONBOARD[key]}.")
+            
             self.hitCounter += 1
         pass
 

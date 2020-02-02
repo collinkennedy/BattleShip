@@ -103,10 +103,10 @@ class Game:
                             print(x, y)
 
                 player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
-                for i in range(player.listOfPlayerShips[ship].shipSize):
-                    player.playerBoard.lettersOnBoard.append(player.listOfPlayerShips[ship].shipName)
-                player.playerBoard.lettersOnBoard.sort()
-                print(player.playerBoard.lettersOnBoard)
+                player.playerBoard.shipsOnBoard[player.listOfPlayerShips[ship].shipName] = player.listOfPlayerShips[ship].shipSize
+                player.playerBoard.UNCHANGEDSHIPSONBOARD = copy.copy(player.playerBoard.shipsOnBoard)
+                print(player.playerBoard.shipsOnBoard)
+
             #for row in range(len(player.playerBoard.contents)):
             #    for col in range(len(player.playerBoard.contents[row])):
             #        if player.playerBoard.contents[row][col] != player.playerBoard.blankChar:

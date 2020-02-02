@@ -9,7 +9,8 @@ class Board:
         self.numRows = numRows
         self.blankChar = blankChar
         self.takenCoords = []
-        self.lettersOnBoard = []
+        self.shipsOnBoard = {}
+        self.UNCHANGEDSHIPSONBOARD = {}
         self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]
 
     @property

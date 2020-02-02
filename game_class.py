@@ -72,12 +72,12 @@ class Game:
                 
                 if player.listOfPlayerShips[ship].orientation == 'v':
                     while (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
-                        x = int(input(f"Please enter a value for x that is within 0 and {self.maxX - player.listOfPlayerShips[ship].shipSize} (you entered {x}): "))
+                        x = int(input(f"Please enter a value for x that is within 0 and {self.maxX - player.listOfPlayerShips[ship].shipSize + 1} (you entered {x}): "))
                     while y > self.maxY:
                         y = int(input(f"Please enter a value for y that is within 0 and {self.maxY} (you entered {y}): "))
                 elif player.listOfPlayerShips[ship].orientation == 'h':
                     while (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
-                        y = int(input(f"Please enter a value for y that is within 0 and {self.maxY - player.listOfPlayerShips[ship].shipSize} (you entered {y}): "))
+                        y = int(input(f"Please enter a value for y that is within 0 and {self.maxY - player.listOfPlayerShips[ship].shipSize + 1} (you entered {y}): "))
                     while x > self.maxX:
                         x = int(input(f"Please enter a value for x that is within 0 and {self.maxX} (you entered {x}): "))
                 while player.playerBoard.badValues(player.listOfPlayerShips[ship], x, y, player.playerBoard, self.maxX, self.maxY, player):

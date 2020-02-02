@@ -30,11 +30,11 @@ class Board:
         return self.listOfPlayerShips
 
     def __str__(self) -> str:
-        sep = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
-        rep = sep * 2 + sep.join((str(i) for i in range(self.numCols))) + '\n'
-        for row_index, row in enumerate(self):
-            rep += str(row_index) + sep + sep.join(row) + '\n'
-        return rep
+        space = ' ' * max([len(str(self.numRows)), len(str(self.numCols))])
+        repeat = space * 2 + space.join((str(i) for i in range(self.numCols))) + '\n'
+        for rowIndex, row in enumerate(self):
+            repeat += str(rowIndex) + space + space.join(row) + '\n'
+        return repeat
 
     def __iter__(self) -> Iterator[List[str]]:
         return iter(self.contents)

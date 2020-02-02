@@ -17,17 +17,10 @@ class Player:
         self.overlappingShips : List[Ship.getShipName[0]] = []
 
     def getListOfShips(self):
-        """
-        loop through the dictionary that is returned by the
-        readFileShips() method in the Ship class, and create ship objects
-        and append those ship objects to the listOfPlayerShips attribute 
-        of the Player class (which is a list)
-        """
         returnedDictOfShips = Ship.readFileShips()
         for shipName, shipSize in returnedDictOfShips.items(): # create a ship object with those attributes and store it in a list
             newShip = Ship(shipName, shipSize)
             self.listOfPlayerShips.append(newShip)
-        print(self.listOfPlayerShips)
         return self.listOfPlayerShips
 
     def move(self, curPlayer : "Player", otherPlayer : "Player"):

@@ -24,31 +24,44 @@ class Player:
         return self.listOfPlayerShips
 
     def move(self, curPlayer : "Player", otherPlayer : "Player"):
+        x, y = None, None
         while True:
             try:
-                enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate to fire upon: ").split(',')
-                x, y = int(enteredX), int(enteredY)
+                while x == None or curPlayer.scanningBoard.contents[x][y]:
+                    entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
+                    enteredX, enteredY = entered.split(',')
+                    x, y = int(enteredX), int(enteredY)
+                    break
                 break
+            except IndexError:
+                print(f"{x}, {y} is not in bounds of our {self.playerBoard.numRows} X {self.playerBoard.numCols} board.")
+                x, y = None, None
+                continue
             except ValueError:
-                print("Your firing position is invalid.")
-        begin = True
-        while begin:
+                print(f"{entered} is not a valid location.")
+                x, y = None, None
+                continue
+            break
+        while True:
             try:
-                while (curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar):
+                while x == None or curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar:
                     enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that has NOT been previously fired upon: ").split(',')
                     x, y = int(enteredX), int(enteredY)
                 curPlayer.fire(otherPlayer, x, y)
-                begin = False
-            except IndexError:
-                enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that is on the board: ").split(',')
-                x, y = int(enteredX), int(enteredY)
+                break
+            except IndexError: #bound error
+                print(f"{x}, {y} is not in bounds of our {self.playerBoard.numRows} X {self.playerBoard.numCols} board.")
+                x, y = None, None
+                continue
             except ValueError:
-                print("Your firing position is invalid.")
+                print(f"{entered} is not a valid location.")
+                x, y = None, None
+                continue
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:
             self.scanningBoard.contents[x][y] = 'M'
-            print(f"You missed, {self.name}. xD")
+            print(f"Miss")
         else:
             temp = otherPlayer.playerBoard.contents[x][y]
             self.scanningBoard.contents[x][y] = 'X'
@@ -56,10 +69,10 @@ class Player:
             for key, value in otherPlayer.playerBoard.shipsOnBoard.items():
                 if key.startswith(temp):
                     otherPlayer.playerBoard.shipsOnBoard[key] -= 1
-                    print(f"You hit {key}, {self.name}. :/")
+                    print(f"You hit {otherPlayer.name}'s {key}!")
                     print(otherPlayer.playerBoard.shipsOnBoard)
                     if otherPlayer.playerBoard.shipsOnBoard[key] == 0:
-                        print(f"You sunk {otherPlayer.name}'s {key} of size {otherPlayer.playerBoard.UNCHANGEDSHIPSONBOARD[key]}.")
+                        print(f"You destroyed {otherPlayer.name}'s {key}")
             self.hitCounter += 1
         pass
 
@@ -67,7 +80,8 @@ class Player:
     def getNameFromPlayer(otherPlayers: Iterable["Player"]) -> str:
         alreadyUsedNames = set([player.name for player in otherPlayers])
         while True: # this loops until a player enters a unique name
-            name = input('Please enter your name: ')
+            i = len(alreadyUsedNames) + 1
+            name = input(f"Player {i} please enter your name: ")
             if name not in alreadyUsedNames:
                 return name
             else:

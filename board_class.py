@@ -13,14 +13,6 @@ class Board:
         self.UNCHANGEDSHIPSONBOARD = {}
         self.contents = [[blankChar for col in range(numCols)] for row in range(numRows)]
 
-    @property
-    def numCols(self):
-        return len(self.numCols)
-
-    @property
-    def numRows(self):
-        return len(self.numRows)
-
     def getListOfShips(self):
         returnedDictOfShips = Ship.readFileShips()
         for shipName, shipSize in returnedDictOfShips.items(): # create a ship object with those attributes and store it in a list
@@ -42,11 +34,9 @@ class Board:
     def __getitem__(self, i: int) -> List[str]:
         self.contents[i]
 
-    # @property
     def numCols(self):
         return len(self.numCols)
 
-    # @property
     def numRows(self):
         return len(self.numRows)
 
@@ -88,51 +78,3 @@ class Board:
 
 if __name__ == "__main__":
     pass
-
-
-    #def placeShips(self, ship: "Ship", tempX: int, tempY: int, tempOrientation: str):
-    #    if self.takenCoords != []:
-    #        testingCoords = True
-    #        testableCoords = []
-    #        for i in range(ship.shipSize):
-    #            testableCoords.append(tuple(tempX, tempY))
-    #            if ship.orientation == 'h':
-    #                tempY += 1
-    #            elif ship.orientation == 'v':
-    #                tempX += 1
-    #        print(testableCoords)
-    #        while testingCoords:
-    #            for testableCoordsTuple in testableCoords:
-    #                for i in self.takenCoords:
-    #                    if testableCoordsTuple == self.takenCoords[i]:
-    #                        tempX, tempY = input("Please enter a non-overlapping position: ").split(",")
-    #                        testableCoords = []
-    #                        for i in range(ship.shipSize):
-    #                            testableCoords.append(tuple(tempX, tempY))
-    #                            if ship.orientation == 'h':
-    #                                tempY += 1
-    #                            elif ship.orientation == 'v':
-    #                                tempX += 1
-    #                    else:
-    #                        testingCoords = False
-    #    else:  # possibly not going into here
-    #        if ship.orientation == 'h':
-    #            x = tempX
-    #            y = tempY
-    #            for i in range(ship.shipSize):
-    #                self.contents[x][y] = ship.shipLetter
-    #                ship.placementPosX.append(x)
-    #                ship.placementPosY.append(y)
-    #                y += 1
-    #        elif ship.orientation == 'v':
-    #            x = tempX
-    #            y = tempY
-    #            for j in range(ship.shipSize):
-    #                self.contents[x][y] = ship.shipLetter
-    #                ship.placementPosX.append(x)
-    #                ship.placementPosY.append(y)
-    #                x += 1
-    #        zipper = zip(ship.placementPosX, ship.placementPosY)
-    #        for posX, posY in zipper:
-    #            self.takenCoords.append((posX, posY))
-    #        print(self.takenCoords)

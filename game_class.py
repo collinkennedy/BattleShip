@@ -53,17 +53,20 @@ class Game:
         #for player in self.players:
         player = self.getCurPlayer()
         for ship in range(len(player.listOfPlayerShips)):
+            print(f"{player}'s Placement Board")
+            print(player.playerBoard)
+
             player.overlappingShips = []
             player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
 
-            orientationInput = input(f"{player.name}, what direction would you like to place {player.listOfPlayerShips[ship].shipName}? Enter 'h' for horizontal or 'v' for vertical: ")
+            orientationInput = input(f"{player.name} enter horizontal or vertical for the orientation of {player.listOfPlayerShips[ship].shipName} which is {player.listOfPlayerShips[ship].shipSize} long: ")
             while orientationInput[0].lower() != 'v' and orientationInput[0].lower() != 'h':
                 orientationInput = input(f"{orientationInput} does not represent an Orientation")
             player.listOfPlayerShips[ship].orientation = orientationInput[0].lower()
 
             while True:  # loop until we get valid input for ship placement coordinates
                 try:
-                    userInput = input(f"{player.name}, please give coordinates, separated by a comma, formatted row, column, for your {player.listOfPlayerShips[ship].shipName} of size {player.listOfPlayerShips[ship].shipSize}: ")
+                    userInput = input(f"{player.name}, enter the starting position for your {player.listOfPlayerShips[ship].shipName} ship ,which is {player.listOfPlayerShips[ship].shipSize} long, in the form row, column: ")
                     ex, ey = userInput.split(',')
                     x, y = int(ex), int(ey)
                 except ValueError:
@@ -106,7 +109,7 @@ class Game:
             player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
             player.playerBoard.shipsOnBoard[player.listOfPlayerShips[ship].shipName] = player.listOfPlayerShips[ship].shipSize
             player.playerBoard.UNCHANGEDSHIPSONBOARD = copy.copy(player.playerBoard.shipsOnBoard)
-            print(player.playerBoard.shipsOnBoard)
+            #print(player.playerBoard.shipsOnBoard) #prints dict of ships and number of occupied spaces on board
 
     def displayGameState(self) -> None:
         print(self.board)

@@ -85,7 +85,8 @@ class Player:
             if name not in alreadyUsedNames:
                 return name
             else:
-                print(f'{name} has already been used. Pick another name.')
+                print(f"Someone is already using {name} for their name.")
+                print("Please choose another name.")
 
     def __str__(self) -> str:
         return self.name

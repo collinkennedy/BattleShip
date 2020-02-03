@@ -40,12 +40,13 @@ class Game:
             print("{}'s Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
             curPlayer.move(curPlayer, self.getOtherPlayer())
+            print(f"{curPlayer.name}'s Scanning Board\n{curPlayer.scanningBoard}\n{curPlayer.name}'s Board\n{curPlayer.playerBoard}\n", end='')
             if (curPlayer.hitCounter == self.possibleTotalHits):
-                self.displayTheWinner(curPlayer)
                 outerCheck = True
                 self.someoneWon(outerCheck)
-            print(f"{curPlayer.name}'s Scanning Board\n{curPlayer.scanningBoard}\n{curPlayer.name}'s Board\n{curPlayer.playerBoard}\n", end='')
+                continue
             self.changeTurn()
+        self.displayTheWinner(curPlayer)
 
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
         # and someone will have won the game

@@ -69,6 +69,11 @@ class Game:
                     userInput = input(f"{player.name}, enter the starting position for your {player.listOfPlayerShips[ship].shipName} ship ,which is {player.listOfPlayerShips[ship].shipSize} long, in the form row, column: ")
                     ex, ey = userInput.split(',')
                     x, y = int(ex), int(ey)
+                    if x < 0 or y < 0:
+                        print("x or y were less than zero")
+                        x, y = None, None
+                        continue
+                    break
                 except ValueError:
                     print(f"{userInput} is not in the form x, y")
                     continue

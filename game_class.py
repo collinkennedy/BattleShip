@@ -132,6 +132,5 @@ class Game:
     def displayTheWinner(self, player: "Player"):
         print(f'{player} won the game!')
 
-
 if __name__ == "__main__":
     pass

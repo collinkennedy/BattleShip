@@ -37,13 +37,14 @@ class Game:
             curPlayer = self.getCurPlayer()
             print("{}'s Scanning Board".format(curPlayer.name))
             print(curPlayer.scanningBoard)
-            print("{}'s Ship Board".format(curPlayer.name))
+            print("{}'s Board".format(curPlayer.name))
             print(curPlayer.playerBoard)
             curPlayer.move(curPlayer, self.getOtherPlayer())
             if (curPlayer.hitCounter == self.possibleTotalHits):
                 self.displayTheWinner(curPlayer)
                 outerCheck = True
                 self.someoneWon(outerCheck)
+            print(f"{curPlayer.name}'s Scanning Board\n{curPlayer.scanningBoard}\n{curPlayer.name}'s Board\n{curPlayer.playerBoard}\n")
             self.changeTurn()
 
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
@@ -53,8 +54,7 @@ class Game:
         #for player in self.players:
         player = self.getCurPlayer()
         for ship in range(len(player.listOfPlayerShips)):
-            print(f"{player}'s Placement Board")
-            print(player.playerBoard)
+            print(f"{player}'s Placement Board\n{player.playerBoard}")
 
             player.overlappingShips = []
             player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
@@ -105,11 +105,13 @@ class Game:
                         enteredX = input(f"Please enter a value for x that is within 0 and {self.maxX}: ")
                         x = int(enteredX)
                         print(x, y)
-
             player.playerBoard.placeShip(player.listOfPlayerShips[ship], int(x), int(y), player.playerBoard)
             player.playerBoard.shipsOnBoard[player.listOfPlayerShips[ship].shipName] = player.listOfPlayerShips[ship].shipSize
             player.playerBoard.UNCHANGEDSHIPSONBOARD = copy.copy(player.playerBoard.shipsOnBoard)
+            #print(f"{player.name}'s Placement Board")
+            #print(player.playerBoard)
             #print(player.playerBoard.shipsOnBoard) #prints dict of ships and number of occupied spaces on board
+        print(f"{player}'s Placement Board\n{player.playerBoard}")
 
     def displayGameState(self) -> None:
         print(self.board)

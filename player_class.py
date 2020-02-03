@@ -60,7 +60,8 @@ class Player:
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:
-            self.scanningBoard.contents[x][y] = 'M'
+            self.scanningBoard.contents[x][y] = 'O'
+            otherPlayer.playerBoard.contents[x][y] = 'O'
             print(f"Miss")
         else:
             temp = otherPlayer.playerBoard.contents[x][y]

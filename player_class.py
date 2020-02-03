@@ -71,7 +71,6 @@ class Player:
                 if key.startswith(temp):
                     otherPlayer.playerBoard.shipsOnBoard[key] -= 1
                     print(f"You hit {otherPlayer.name}'s {key}!")
-                    print(otherPlayer.playerBoard.shipsOnBoard)
                     if otherPlayer.playerBoard.shipsOnBoard[key] == 0:
                         print(f"You destroyed {otherPlayer.name}'s {key}")
             self.hitCounter += 1

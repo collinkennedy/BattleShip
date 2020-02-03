@@ -44,7 +44,7 @@ class Game:
                 self.displayTheWinner(curPlayer)
                 outerCheck = True
                 self.someoneWon(outerCheck)
-            print(f"{curPlayer.name}'s Scanning Board\n{curPlayer.scanningBoard}\n{curPlayer.name}'s Board\n{curPlayer.playerBoard}\n")
+            print(f"{curPlayer.name}'s Scanning Board\n{curPlayer.scanningBoard}\n{curPlayer.name}'s Board\n{curPlayer.playerBoard}\n", end=' ')
             self.changeTurn()
 
         # someoneWon will remain false until hits = counter , when they equal each other, the while loop will end
@@ -54,7 +54,7 @@ class Game:
         #for player in self.players:
         player = self.getCurPlayer()
         for ship in range(len(player.listOfPlayerShips)):
-            print(f"{player}'s Placement Board\n{player.playerBoard}")
+            print(f"{player}'s Placement Board\n{player.playerBoard}", end=' ')
 
             player.overlappingShips = []
             player.listOfPlayerShips[ship].shipLetter = player.listOfPlayerShips[ship].shipName[0]
@@ -111,7 +111,7 @@ class Game:
             #print(f"{player.name}'s Placement Board")
             #print(player.playerBoard)
             #print(player.playerBoard.shipsOnBoard) #prints dict of ships and number of occupied spaces on board
-        print(f"{player}'s Placement Board\n{player.playerBoard}")
+        print(f"{player}'s Placement Board\n{player.playerBoard}", end=' ')
 
     def displayGameState(self) -> None:
         print(self.board)

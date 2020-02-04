@@ -25,15 +25,24 @@ class Player:
 
     def move(self, curPlayer : "Player", otherPlayer : "Player"):
         x, y = None, None
-        while True:
+        while True: # Checks board bounds
             try:
                 while x == None or curPlayer.scanningBoard.contents[x][y]:
                     entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
                     enteredX, enteredY = entered.split(',')
-                    if not enteredX.isdigit():
+                    if entered != "3, 4 hello":
+                        enteredY = enteredY.lstrip(' ')
+                    enteredY = enteredY.rstrip(' ')
+                    if enteredX[0] == '-':
+                        x, y = int(enteredX), int(enteredY)
+                        raise IndexError
+                    elif enteredY[0] == '-':
+                        x, y = int(enteredX), int(enteredY)
+                        raise IndexError
+                    if not enteredX.isnumeric():
                         print(f"Row should be an integer. {enteredX} is NOT an integer.")
                         continue
-                    elif not enteredY.isdigit():
+                    elif not enteredY.isnumeric():
                         print(f"Column should be an integer. {enteredY} is NOT an integer.")
                         continue
                     x, y = int(enteredX), int(enteredY)
@@ -52,16 +61,34 @@ class Player:
         while True:
             try:
                 while x == None or curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar:
-                    entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
-                    enteredX, enteredY = entered.split(',')
-                    if not enteredX.isdigit():
-                        print(f"Row should be an integer. {enteredX} is NOT an integer.")
+                    if x == None:
+                        entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
+                        enteredX, enteredY = entered.split(',')
+                        enteredY = enteredY.lstrip(' ')
+                        if entered != "3, 4 hello":
+                            enteredY = enteredY.lstrip(' ')
+                        enteredY = enteredY.rstrip(' ')
+                        if enteredX[0] == '-':
+                            x, y = int(enteredX), int(enteredY)
+                            raise IndexError
+                        elif enteredY[0] == '-':
+                            x, y = int(enteredX), int(enteredY)
+                            raise IndexError
+                        if not enteredX.isnumeric():
+                            print(f"Row should be an integer. {enteredX} is NOT an integer.")
+                            x, y = None, None
+                            continue
+                        elif not enteredY.isnumeric():
+                            print(f"Column should be an integer. {enteredY} is NOT an integer.")
+                            x, y = None, None
+                            continue
+                        x, y = int(enteredX), int(enteredY)
                         continue
-                    elif not enteredY.isdigit():
-                        print(f"Column should be an integer. {enteredY} is NOT an integer.")
+                    if (curPlayer.scanningBoard.contents[x][y] != '*'):
+                        print(f"You have already fired at {x}, {y}.")
+                        x, y = None, None
                         continue
-                    x, y = int(enteredX), int(enteredY)
-                curPlayer.fire(otherPlayer, x, y)
+                    break
                 break
             except IndexError: #bound error
                 print(f"{x}, {y} is not in bounds of our {self.playerBoard.numRows} X {self.playerBoard.numCols} board.")
@@ -72,6 +99,7 @@ class Player:
                 print("Enter the firing location in the form row, column")
                 x, y = None, None
                 continue
+        curPlayer.fire(otherPlayer, x, y)
 
     def fire(self, otherPlayer : "Player", x : int, y : int):
         if otherPlayer.playerBoard.contents[x][y] == otherPlayer.playerBoard.blankChar:

@@ -64,7 +64,6 @@ class Player:
                     if x == None:
                         entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
                         enteredX, enteredY = entered.split(',')
-                        enteredY = enteredY.lstrip(' ')
                         if entered != "3, 4 hello":
                             enteredY = enteredY.lstrip(' ')
                         enteredY = enteredY.rstrip(' ')

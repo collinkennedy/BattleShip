@@ -5,8 +5,8 @@ from ship_class import Ship
 import game_class
 
 if __name__ == '__main__':
-    boardDims : Iterable[List] = [6,6]
-    a = 6
+    #boardDims : Iterable[List] = [6,6]
+    a = 5
     b = 6
     if len(sys.argv) > 1:
         with open(sys.argv[1]) as file:

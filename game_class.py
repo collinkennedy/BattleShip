@@ -71,12 +71,12 @@ class Game:
                     ex, ey = userInput.split(',')
                     x, y = int(ex), int(ey)
                     if x < 0 or y < 0:
-                        print("x or y were less than zero")
+                        print("row or col were less than zero")
                         x, y = None, None
                         continue
                     break
                 except ValueError:
-                    print(f"{userInput} is not in the form x, y")
+                    print(f"{userInput} is not in the form row, col")
                     continue
                 break
                 

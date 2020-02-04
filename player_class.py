@@ -30,6 +30,12 @@ class Player:
                 while x == None or curPlayer.scanningBoard.contents[x][y]:
                     entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
                     enteredX, enteredY = entered.split(',')
+                    if not enteredX.isdigit():
+                        print(f"Row should be an integer. {enteredX} is NOT an integer.")
+                        continue
+                    elif not enteredY.isdigit():
+                        print(f"Column should be an integer. {enteredY} is NOT an integer.")
+                        continue
                     x, y = int(enteredX), int(enteredY)
                     break
                 break
@@ -39,13 +45,21 @@ class Player:
                 continue
             except ValueError:
                 print(f"{entered} is not a valid location.")
+                print("Enter the firing location in the form row, column")
                 x, y = None, None
                 continue
             break
         while True:
             try:
                 while x == None or curPlayer.scanningBoard.contents[x][y] != curPlayer.scanningBoard.blankChar:
-                    enteredX, enteredY = input(f"{curPlayer.name}, please enter a coordinate that has NOT been previously fired upon: ").split(',')
+                    entered = input(f"{curPlayer.name}, enter the location you want to fire at in the form row, column: ")
+                    enteredX, enteredY = entered.split(',')
+                    if not enteredX.isdigit():
+                        print(f"Row should be an integer. {enteredX} is NOT an integer.")
+                        continue
+                    elif not enteredY.isdigit():
+                        print(f"Column should be an integer. {enteredY} is NOT an integer.")
+                        continue
                     x, y = int(enteredX), int(enteredY)
                 curPlayer.fire(otherPlayer, x, y)
                 break
@@ -55,6 +69,7 @@ class Player:
                 continue
             except ValueError:
                 print(f"{entered} is not a valid location.")
+                print("Enter the firing location in the form row, column")
                 x, y = None, None
                 continue
 

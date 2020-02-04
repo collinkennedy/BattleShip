@@ -21,8 +21,8 @@ class Ship:
     def readFileShips() -> Iterable[Dict]:
         dictOfShips = {}
         if (len(sys.argv) == 1):
-            dictOfShips["Bet"] = 2
-            dictOfShips["Exdee"] = 3
+            dictOfShips["Patrol"] = 2
+            dictOfShips["Submarine"] = 3
         else:
             with open(sys.argv[1]) as file:
                 for i, line in enumerate(file):

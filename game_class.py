@@ -81,15 +81,31 @@ class Game:
                 break
                 
             if player.listOfPlayerShips[ship].orientation == 'v':
-                while (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
-                    x = int(input(f"Please enter a value for x that is within 0 and {self.maxX - player.listOfPlayerShips[ship].shipSize + 1} (you entered {x}): "))
-                while y > self.maxY:
-                    y = int(input(f"Please enter a value for y that is within 0 and {self.maxY} (you entered {y}): "))
+                while True:
+                    try:
+                        while (x + player.listOfPlayerShips[ship].shipSize - 1) > self.maxX:
+                            entx = input(f"Please enter a value for x that is within 0 and {self.maxX - player.listOfPlayerShips[ship].shipSize + 1}: ")
+                            x = int(entx)
+                        while y > self.maxY:
+                            enty = input(f"Please enter a value for y that is within 0 and {self.maxY}: ")
+                            y = int(enty)
+                        break
+                    except ValueError:
+                        print("Value error")
+                        continue
             elif player.listOfPlayerShips[ship].orientation == 'h':
-                while (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
-                    y = int(input(f"Please enter a value for y that is within 0 and {self.maxY - player.listOfPlayerShips[ship].shipSize + 1} (you entered {y}): "))
-                while x > self.maxX:
-                    x = int(input(f"Please enter a value for x that is within 0 and {self.maxX} (you entered {x}): "))
+                while True:
+                    try:
+                        while (y + player.listOfPlayerShips[ship].shipSize - 1) > self.maxY:
+                            enty = input(f"Please enter a value for y that is within 0 and {self.maxY - player.listOfPlayerShips[ship].shipSize + 1}: ")
+                            y = int(enty)
+                        while x > self.maxX:
+                            entx = input(f"Please enter a value for x that is within 0 and {self.maxX}: ")
+                            x = int(entx)
+                        break
+                    except ValueError:
+                        print("Value error")
+                        continue
             while player.playerBoard.badValues(player.listOfPlayerShips[ship], x, y, player.playerBoard, self.maxX, self.maxY, player):
                 ex, ey = input(f"Please enter a new set of coordinates that do not overlap with another ship {player.overlappingShips}: ").split(",")
                 x, y = int(ex), int(ey)

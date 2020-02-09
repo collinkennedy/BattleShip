@@ -6,7 +6,6 @@ from board_class import Board
 import main
 from ship_class import Ship
 
-
 class Player:
     def __init__(self, otherPlayers: Iterable["Player"], gameBoard: "Board") -> None:
         self.name = self.getNameFromPlayer(otherPlayers)
